@@ -49,7 +49,7 @@ class Worker:
             message = f"[模拟回复] {task['text']}"
             encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
             print(message.encode(encoding, errors="replace").decode(encoding), flush=True)
-        elif task["kind"] == "group" and self.cfg.bot_token:
+        elif task["kind"] == "group" and self.cfg.bot_token and not task.get("reply_to_message_id"):
             outcome = await send_bot(self.platform, self.cfg, task)
             if outcome.pop("fallback", False):
                 outcome = await self.gateway.send_socket(task)

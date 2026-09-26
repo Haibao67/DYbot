@@ -1,19 +1,29 @@
 from datetime import datetime
 from dzmm_bot.domain.economy import HK
 
-NAMES = {"feed": "饲料", "egg": "鸡蛋", "wool": "羊毛", "milk": "牛奶",
+NAMES = {"feed": "饲料", "premium_feed": "精饲料", "egg": "鸡蛋", "wool": "羊毛", "milk": "牛奶",
          "chicken": "鸡", "sheep": "羊", "cow": "牛", "ranch": "牧场"}
 HELP = ("🌾 冬宴游戏帮助\n/加入｜/我的｜/救济\n/牧场 查看 [页码]\n"
-        "/牧场 购买 鸡|羊|牛|饲料 [数量]\n/牧场 喂食 <动物编号>\n"
+        "/牧场 购买 鸡|羊|牛|饲料 [数量]\n/喂食 [精]｜/买精饲料 [数量]\n"
         "/牧场 收获\n/牧场 出售 鸡蛋|羊毛|牛奶|全部 [数量]\n/牧场 升级\n/排行 总榜 [页码]")
 
 
 def help_text(stage):
     if stage == "m0":
-        return "👤 冬宴游戏帮助\n/加入｜/我的｜/救济｜/帮助"
+        return "👤 冬宴游戏帮助\n/加入｜/我的（/资料）｜/救济｜/帮助\n输入 /瑞禾玩法 查看当前开放功能"
+    lines = HELP.splitlines()
     if stage == "ranch":
-        return "\n".join(line for line in HELP.splitlines() if not line.startswith(("/牧场 出售", "/牧场 升级")))
-    return HELP
+        lines = [line for line in lines if not line.startswith(("/牧场 出售", "/牧场 升级"))]
+    lines.extend([
+        "/瑞禾玩法｜/菜单 [牧场|交易]｜查看当前开放功能",
+        "/牧场｜/行情｜/资料｜/买动物 鸡|羊|牛 [数量]｜/收取",
+        "未开放玩法会明确提示；旧指令继续可用。",
+    ])
+    if stage == "ranch":
+        lines.append("牧场测试阶段暂不开放出售与升级。")
+    else:
+        lines.append("/出售 鸡蛋|羊毛|牛奶|全部 [数量]｜/牧场升级")
+    return "\n".join(lines)
 
 
 def error(code, **d):
@@ -69,8 +79,10 @@ def render(result, reference=None, stage="full"):
             lines.append(f"{'实际到账' if kind == 'sell' else '实际支付'}：⨀ {abs(row['net'])}")
         lines.extend([f"🪙 余额：⨀ {result['balance']}", f"奖池累计税额：⨀ {result['pool']}"])
     elif kind == "feed":
-        lines = ["✅ 喂食完成", f"消耗饲料：{result['quantity']}｜剩余：{result['remaining']}",
-                 "生产期已重置为 48 小时", f"🪙 余额：⨀ {result['balance']}"]
+        lines = ["✅ 喂食完成", f"喂养动物：{result.get('animals', 1)} 只｜消耗饲料：{result['quantity']}｜剩余：{result['remaining']}"]
+        if result.get("premium_quantity"):
+            lines.append(f"消耗精饲料：{result['premium_quantity']}｜剩余：{result['premium_remaining']}")
+        lines.extend(["饲料有效期：12 小时", f"🪙 余额：⨀ {result['balance']}"])
     elif kind == "harvest":
         lines = ["📦 收获完成", "｜".join(f"{NAMES[k]} ×{v}" for k, v in result["totals"].items()) or "暂无到期产出",
                  f"🪙 余额：⨀ {result['balance']}"]

@@ -44,6 +44,8 @@ class Store:
             reply = CommandRouter(db, now, self.secret, self.game_stage, self.whitelist).dispatch(event, room)
             if reply:
                 db.execute(outbox.insert().values(id=str(uuid.uuid4()), room=event.room, kind=room["kind"],
+                           reply_to_message_id=event.message_id, reply_to_sender_id=event.sender,
+                           reply_to_text=event.text,
                            text=reply, status="pending", created=now, available=now, attempts=0))
             return {"ok": True, "queued": reply is not None}
 

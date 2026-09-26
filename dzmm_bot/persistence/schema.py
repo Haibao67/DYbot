@@ -1,5 +1,5 @@
-from sqlalchemy import (MetaData, Table, Column, String, Integer, BigInteger, Float,
-                        Text, UniqueConstraint, CheckConstraint, Index)
+from sqlalchemy import (MetaData, Table, Column, String, Integer, BigInteger, Float, false,
+                        Text, Boolean, UniqueConstraint, CheckConstraint, Index)
 
 meta = MetaData()
 
@@ -56,7 +56,11 @@ animals = table("ranch_animals", ident("id", True), ident("player_id"),
     Column("last_settled_at", Float, nullable=False), Column("status", String(20), nullable=False),
     Column("rule_version", String(40), nullable=False), Column("nonce", String(64), nullable=False),
     Column("seed", String(64), nullable=False), Column("seed_commitment", String(64), nullable=False),
-    Column("sequence", Integer, nullable=False))
+    Column("sequence", Integer, nullable=False), Column("affection", Integer, nullable=False, server_default="0"),
+    Column("feed_streak", Integer, nullable=False, server_default="0"),
+    Column("premium_feed_active", Boolean, nullable=False, server_default=false()),
+    Column("cycle_progress", Float, nullable=False, server_default="0"),
+    Column("last_feed_reward_at", Float, nullable=False, server_default="0"))
 products = table("ranch_products", ident("id", True), ident("player_id"),
     Column("product_type", String(40), nullable=False), Column("quantity", Integer, nullable=False),
     ident("source_animal_id"), Column("produced_at", Float, nullable=False), Column("collected_at", Float),

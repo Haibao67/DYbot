@@ -14,6 +14,8 @@ inbox = Table("inbound_messages", meta, Column("id", String(36), primary_key=Tru
               Column("created", Float, nullable=False), UniqueConstraint("room", "message_id"))
 outbox = Table("outbound_messages", meta, Column("id", String(36), primary_key=True),
                Column("room", String(200), nullable=False), Column("kind", String(20), nullable=False),
+               Column("reply_to_message_id", String(200)), Column("reply_to_sender_id", String(200)),
+               Column("reply_to_text", Text),
                Column("text", Text, nullable=False), Column("status", String(20), nullable=False),
                Column("created", Float, nullable=False), Column("available", Float, nullable=False),
                Column("lease", String(36)), Column("lease_until", Float),

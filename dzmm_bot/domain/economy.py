@@ -1,6 +1,7 @@
 import hashlib
 import hmac
 import math
+from decimal import Decimal, ROUND_HALF_UP
 from datetime import datetime, timedelta, timezone
 
 HK = timezone(timedelta(hours=8), "Asia/Hong_Kong")
@@ -15,6 +16,18 @@ RANCH_CONFIG = {**BASE_CONFIG, "tax_bps": 500, "feed_price": 2,
                 "cow": {"space": 3, "price": 300, "feed": 3, "hours": [6, 10], "product": "milk"}},
     "products": {"egg": {"price": 5, "phase": 0}, "wool": {"price": 20, "phase": math.pi / 3},
                  "milk": {"price": 15, "phase": 2 * math.pi / 3}}}
+RUIHE_RANCH_VERSION = "ruihe-ranch-v1"
+RUIHE_RANCH_CONFIG = {**RANCH_CONFIG, "production_hours": 12,
+    "animals": {**RANCH_CONFIG["animals"],
+        "chicken": {**RANCH_CONFIG["animals"]["chicken"], "hours": [3, 5]},
+        "sheep": {**RANCH_CONFIG["animals"]["sheep"], "hours": [9, 12]},
+        "cow": {**RANCH_CONFIG["animals"]["cow"], "hours": [6, 10]}}}
+WEATHER_MULTIPLIERS = {
+    "sunny": {"egg": 1.2, "wool": 1.2, "milk": 1.2},
+    "rainy": {"wool": 1.5}, "drought": {"egg": 0.7},
+    "humid": {"milk": 0.8}, "breeze": {},
+    "harvest_festival": {"egg": 1.5, "wool": 1.5, "milk": 1.5},
+}
 
 
 class GameError(Exception):
@@ -64,3 +77,16 @@ def interval(seed, sequence, animal, level, config):
     lo, hi = config["animals"][animal]["hours"]
     base = lo + (hi - lo) * fraction
     return base, base * 3600 / (1 + config["interval_level_bonus"] * (level - 1))
+
+
+def production_multiplier(affection=0, feed_streak=0, premium_feed=False,
+                          weather="breeze", product=None, future_buff=1.0):
+    weather_factor = WEATHER_MULTIPLIERS.get(weather, {}).get(product, 1.0)
+    return (1 + 0.02 * max(0, min(9, int(affection)))) * (1.1 if feed_streak >= 3 else 1.0) \
+        * (1.15 if premium_feed else 1.0) * weather_factor * future_buff
+
+
+def production_quantity(base_quantity, multiplier):
+    """Use one consistent half-up integer rule for every animal batch."""
+    return max(0, int((Decimal(str(base_quantity)) * Decimal(str(multiplier))).quantize(
+        Decimal("1"), rounding=ROUND_HALF_UP)))

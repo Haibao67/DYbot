@@ -1,0 +1,33 @@
+{
+  "result": {
+    "name": "小禾",
+    "level": 1,
+    "used_capacity": 1,
+    "capacity": 5,
+    "pending": 1,
+    "pending_by_animal": {"animal-1": 1},
+    "page": 1,
+    "pages": 1,
+    "now": 1025,
+    "weather_enabled": false,
+    "animals": [{
+      "id": "animal-1",
+      "display_id": "鸡001",
+      "animal_type": "chicken",
+      "status": "active",
+      "running": true,
+      "production_until": 1100,
+      "last_settled_at": 1000,
+      "next_production_at": 1050,
+      "next_in": 25,
+      "feed_in": 75,
+      "progress": 0.5,
+      "affection": 2,
+      "feed_streak": 0,
+      "premium_feed_active": false
+    }],
+    "stocks": {"feed": 3, "premium_feed": 0, "egg": 2, "wool": 0, "milk": 0},
+    "prices": {"egg": 5, "wool": 20, "milk": 15}
+  },
+  "expected": "—— 🏡 小禾 的牧场 ——\n等级：Lv.1｜容量：1/5\n🌤️ 今日天气：暂未启用（天气概率待配置）\n鸡×1｜生产中\n　鸡001（亲密度 💗💗）\n　▓▓▓░░░ 待收 1 鸡蛋｜约 1分钟 后新一批\n　⏰ 饲料还能撑 2分钟\n—— 库存 ——\n鸡蛋 ×2｜现价 ⨀ 5｜估值 ⨀ 10\n羊毛 ×0｜现价 ⨀ 20｜估值 ⨀ 0\n牛奶 ×0｜现价 ⨀ 15｜估值 ⨀ 0\n饲料 ×3\n精饲料 ×0\n指令：/喂食｜/喂食 精｜/收取｜/行情｜/买动物｜/出售｜/牧场升级｜/瑞禾玩法"
+}

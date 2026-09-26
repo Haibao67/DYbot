@@ -67,11 +67,28 @@ class CoreTests(unittest.TestCase):
     def test_start_and_help_have_distinct_replies(self):
         self.receive(mid="start", text="/不存在")
         start = self.claim()
+        self.assertEqual((start["reply_to_message_id"], start["reply_to_sender_id"]), ("start", "u1"))
+        self.assertEqual(start["reply_to_text"], "/不存在")
         self.transition(start, "begin")
         self.transition(start, "sent", platform_id="start-message")
         self.receive(mid="help", text="/帮助")
         help_task = self.claim()
+        self.assertEqual((help_task["reply_to_message_id"], help_task["reply_to_sender_id"]), ("help", "u1"))
         self.assertNotEqual(start["text"], help_task["text"])
+
+    def test_interleaved_players_keep_their_own_reply_context(self):
+        self.client.post("/internal/inbound", headers=self.auth, json={
+            "room": "g1", "message_id": "alice-1", "sender": "alice", "name": "Alice", "text": "/加入"})
+        self.client.post("/internal/inbound", headers=self.auth, json={
+            "room": "g1", "message_id": "bob-1", "sender": "bob", "name": "Bob", "text": "/不存在"})
+        first, second = self.claim(), None
+        self.transition(first, "begin")
+        self.transition(first, "sent", platform_id="answer-1")
+        second = self.claim()
+        self.assertEqual((first["reply_to_message_id"], first["reply_to_sender_id"]), ("alice-1", "alice"))
+        self.assertEqual((second["reply_to_message_id"], second["reply_to_sender_id"]), ("bob-1", "bob"))
+        self.assertEqual(first["reply_to_text"], "/加入")
+        self.assertEqual(second["reply_to_text"], "/不存在")
 
     def test_lease_recovery_and_uncertain_blocks_only_its_room(self):
         self.receive()
@@ -142,7 +159,7 @@ class CoreTests(unittest.TestCase):
         status = self.client.get("/admin/status", headers=self.admin).json()
         self.assertEqual(status["outbound"], {"failed": 1})
 
-    def test_live_worker_private_route_and_uncertain_bot_no_fallback(self):
+    def test_live_worker_routes_player_replies_through_socket(self):
         self.cfg.mode = "live"
         self.cfg.bot_token = "test-token"
         self.room("dm1", "private")
@@ -161,11 +178,11 @@ class CoreTests(unittest.TestCase):
                     await worker.drain_once()
                     await worker.drain_once()
         asyncio.run(exercise())
-        gateway.send_socket.assert_awaited_once()
-        self.assertEqual(gateway.send_socket.call_args.args[0]["kind"], "private")
-        self.assertEqual(self.client.get("/admin/status", headers=self.admin).json()["outbound"], {"sent": 1, "uncertain": 1})
+        self.assertEqual(gateway.send_socket.await_count, 2)
+        self.assertEqual({call.args[0]["kind"] for call in gateway.send_socket.await_args_list}, {"group", "private"})
+        self.assertEqual(self.client.get("/admin/status", headers=self.admin).json()["outbound"], {"sent": 2})
 
-    def test_live_worker_explicit_bot_rejection_falls_back(self):
+    def test_live_worker_routes_player_reply_through_socket(self):
         self.cfg.mode = "live"
         self.cfg.bot_token = "test-token"
         self.receive()
@@ -173,12 +190,14 @@ class CoreTests(unittest.TestCase):
         gateway.socket.connected = True
         gateway.send_socket = AsyncMock(return_value={"action": "sent", "platform_id": "fallback-message"})
 
+        requests = []
         async def exercise():
             async with httpx.AsyncClient(transport=httpx.ASGITransport(app=self.app), base_url="http://core", headers=self.auth) as core:
-                async with httpx.AsyncClient(transport=httpx.MockTransport(lambda r: httpx.Response(403, json={"ok": False}))) as platform:
+                async with httpx.AsyncClient(transport=httpx.MockTransport(lambda r: (requests.append(r), httpx.Response(403, json={"ok": False}))[1])) as platform:
                     await Worker(self.cfg, core, platform, gateway).drain_once()
         asyncio.run(exercise())
         gateway.send_socket.assert_awaited_once()
+        self.assertEqual(requests, [])
         self.assertEqual(self.client.get("/admin/status", headers=self.admin).json()["outbound"], {"sent": 1})
 
 
@@ -225,10 +244,13 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
         gateway.allowed = {"g1"}
         gateway.socket = Mock(connected=True)
         gateway.socket.call = AsyncMock(return_value={"success": True})
-        outcome = await gateway.send_socket({"room": "g1", "kind": "private", "text": "hi"})
+        outcome = await gateway.send_socket({"room": "g1", "kind": "private", "text": "hi",
+            "reply_to_message_id": "original-1", "reply_to_sender_id": "player-1", "reply_to_text": "/帮助"})
         self.assertEqual(outcome["action"], "sent")
         payload = gateway.socket.call.call_args.args[1]
         self.assertEqual(payload["message"]["sent_by"], "verified-account")
+        self.assertEqual(payload["message"]["content"]["reference"], {
+            "id": "original-1", "sentBy": "player-1", "content": {"type": "text", "text": "/帮助"}})
         self.assertEqual(outcome["platform_id"], payload["message"]["message_id"])
 
     async def test_event_validation_and_account_parser(self):

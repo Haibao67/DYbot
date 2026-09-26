@@ -83,10 +83,17 @@ class Gateway:
             if delay > 0:
                 await asyncio.sleep(delay)
             message_id = str(uuid.uuid4())
+            content = {"type": "text", "text": task["text"]}
+            if task.get("reply_to_message_id"):
+                content["reference"] = {
+                    "id": task["reply_to_message_id"],
+                    "sentBy": task["reply_to_sender_id"],
+                    "content": {"type": "text", "text": task["reply_to_text"]},
+                }
             payload = {"chatroomId": task["room"], "message": {
                 "message_id": message_id, "sent_by": self.own_id,
                 "chatroom_id": task["room"], "sent_at": datetime.now(timezone.utc).isoformat(),
-                "content": {"type": "text", "text": task["text"]}}}
+                "content": content}}
             try:
                 ack = await self.socket.call("message:send", payload, timeout=15)
             except (socketio.exceptions.SocketIOError, OSError):
