@@ -1,0 +1,1 @@
+"""Transactional game use cases."""

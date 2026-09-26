@@ -1,0 +1,25 @@
+[Unit]
+Description=DZMM Chromium message Worker
+After=network-online.target dzmm-core.service
+Requires=dzmm-core.service
+PartOf=dzmm-core.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dzmmbot
+Group=dzmmbot
+WorkingDirectory=/srv/dzmm/app
+EnvironmentFile=/etc/dzmm/dzmm.env
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONIOENCODING=utf-8
+ExecStart=/srv/dzmm/app/.venv/bin/python -m dzmm_bot.worker
+Restart=on-failure
+RestartSec=15
+KillSignal=SIGINT
+TimeoutStopSec=45
+KillMode=mixed
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

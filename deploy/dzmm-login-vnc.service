@@ -1,0 +1,13 @@
+[Unit]
+Description=Temporary DZMM login VNC on loopback
+Requires=dzmm-display.service
+After=dzmm-display.service
+PartOf=dzmm-display.service
+
+[Service]
+User=dzmmbot
+Group=dzmmbot
+ExecStart=/usr/bin/x11vnc -display :99 -localhost -rfbport 5901 -nopw -forever -shared -noxdamage
+Restart=on-failure
+RestartSec=2
+UMask=0077

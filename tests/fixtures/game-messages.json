@@ -1,0 +1,163 @@
+[
+  {
+    "result": {
+      "kind": "join",
+      "amount": 100,
+      "balance": 100
+    },
+    "expected": "✅ 已加入冬宴游戏\n🪙 获得：⨀ 100\n当前余额：⨀ 100\n操作编号：12345678\n\n输入 /我的"
+  },
+  {
+    "result": {
+      "kind": "relief",
+      "amount": 70,
+      "balance": 100
+    },
+    "expected": "✅ 救济领取成功\n🪙 补足：⨀ 70\n当前余额：⨀ 100\n操作编号：12345678\n\n输入 /我的"
+  },
+  {
+    "result": {
+      "kind": "profile",
+      "name": "测试玩家",
+      "balance": 100,
+      "joined_at": 1788220800,
+      "status": "active"
+    },
+    "expected": "👤 我的资料\n昵称：测试玩家\n🪙 余额：⨀ 100\n加入时间：2026-09-01 08:00（香港）\n账户状态：正常\n所属世界：冬宴全局世界\n\n输入 /牧场 查看"
+  },
+  {
+    "result": {
+      "kind": "buy",
+      "lines": [
+        {
+          "item": "chicken",
+          "quantity": 1,
+          "gross": 50,
+          "tax": 3,
+          "net": -53
+        }
+      ],
+      "balance": 47,
+      "pool": 3
+    },
+    "expected": "✅ 购买完成\n鸡 ×1\n成交额：⨀ 50｜税额：⨀ 3\n实际支付：⨀ 53\n🪙 余额：⨀ 47\n奖池累计税额：⨀ 3\n操作编号：12345678\n\n输入 /牧场 查看"
+  },
+  {
+    "result": {
+      "kind": "feed",
+      "quantity": 1,
+      "remaining": 2,
+      "balance": 40
+    },
+    "expected": "✅ 喂食完成\n消耗饲料：1｜剩余：2\n生产期已重置为 48 小时\n🪙 余额：⨀ 40\n操作编号：12345678\n\n输入 /牧场 查看"
+  },
+  {
+    "result": {
+      "kind": "harvest",
+      "totals": {
+        "egg": 12
+      },
+      "balance": 40
+    },
+    "expected": "📦 收获完成\n鸡蛋 ×12\n🪙 余额：⨀ 40\n操作编号：12345678\n\n输入 /牧场 出售 全部"
+  },
+  {
+    "result": {
+      "kind": "sell",
+      "lines": [
+        {
+          "item": "egg",
+          "quantity": 12,
+          "price": 5,
+          "gross": 60,
+          "tax": 3,
+          "net": 57
+        }
+      ],
+      "balance": 97,
+      "pool": 6
+    },
+    "expected": "✅ 出售完成 💰\n鸡蛋 ×12｜单价：⨀ 5\n毛收入：⨀ 60｜税额：⨀ 3\n实际到账：⨀ 57\n🪙 余额：⨀ 97\n奖池累计税额：⨀ 6\n操作编号：12345678\n\n输入 /牧场 查看"
+  },
+  {
+    "result": {
+      "kind": "upgrade",
+      "level": 2,
+      "capacity": 7,
+      "lines": [
+        {
+          "item": "ranch",
+          "quantity": 1,
+          "gross": 200,
+          "tax": 10,
+          "net": -210
+        }
+      ],
+      "balance": 90,
+      "pool": 16
+    },
+    "expected": "✅ 牧场升级完成\n当前等级：2｜总容量：7\n牧场 ×1\n成交额：⨀ 200｜税额：⨀ 10\n实际支付：⨀ 210\n🪙 余额：⨀ 90\n奖池累计税额：⨀ 16\n操作编号：12345678\n\n输入 /牧场 查看"
+  },
+  {
+    "error": "joined",
+    "details": {},
+    "expected": "⚠️ 你已加入全局游戏\n\n输入 /我的"
+  },
+  {
+    "error": "frozen",
+    "details": {},
+    "expected": "⚠️ 账户已冻结，暂不能变更资产；请联系管理员\n\n输入 /我的"
+  },
+  {
+    "error": "balance",
+    "details": {
+      "missing": 10
+    },
+    "expected": "⚠️ 余额不足，还缺 ⨀ 10\n\n输入 /救济"
+  },
+  {
+    "error": "capacity",
+    "details": {
+      "missing": 2
+    },
+    "expected": "⚠️ 牧场容量不足，还缺 2 格空间\n\n输入 /牧场 升级"
+  },
+  {
+    "error": "stock",
+    "details": {
+      "item": "feed",
+      "missing": 1
+    },
+    "expected": "⚠️ 饲料不足，还缺 1 个\n\n输入 /牧场 查看"
+  },
+  {
+    "error": "relief_used",
+    "details": {},
+    "expected": "⚠️ 今天已领取救济，香港时间次日零点恢复资格\n\n输入 /我的"
+  },
+  {
+    "error": "no_products",
+    "details": {},
+    "expected": "⚠️ 暂无可出售产品\n\n输入 /牧场 查看"
+  },
+  {
+    "error": "max_level",
+    "details": {},
+    "expected": "⚠️ 牧场已达最高等级九级\n\n输入 /牧场 查看"
+  },
+  {
+    "error": "animal",
+    "details": {},
+    "expected": "⚠️ 找不到属于你的可喂食动物，请核对编号\n\n输入 /牧场 查看"
+  },
+  {
+    "error": "quantity",
+    "details": {},
+    "expected": "⚠️ 数量或页码必须为 1 至 100000 的正整数\n\n输入 /帮助"
+  },
+  {
+    "error": "system",
+    "details": {},
+    "expected": "⚠️ 操作未完成，未扣除资产；请稍后重试\n\n输入 /帮助"
+  }
+]

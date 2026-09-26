@@ -1,0 +1,13 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+data/
+cloudflared.exe
+*.log
+*.pem
+*.key
+*.p12
+*.pfx
+chrome-win64.zip
+chromium-*/

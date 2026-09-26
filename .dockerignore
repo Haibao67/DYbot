@@ -1,0 +1,8 @@
+**
+!Dockerfile
+!requirements.txt
+!app.py
+!dzmm_bot/
+!dzmm_bot/**
+**/__pycache__/
+**/*.pyc

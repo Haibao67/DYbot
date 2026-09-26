@@ -1,0 +1,31 @@
+services:
+  core:
+    build: .
+    environment:
+      DZMM_CORE_TOKEN: ${DZMM_CORE_TOKEN:?Run python -m dzmm_bot.manage init first}
+      DZMM_ADMIN_TOKEN: ${DZMM_ADMIN_TOKEN:?Run python -m dzmm_bot.manage init first}
+      DZMM_DATABASE_URL: sqlite:////app/data/core.sqlite3
+      DZMM_WORKER_MODE: ${DOCKER_WORKER_MODE:-simulate}
+    ports:
+      - "127.0.0.1:18120:18120"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:18120/healthz', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  worker:
+    build: .
+    command: ["python", "-m", "dzmm_bot.worker"]
+    environment:
+      DZMM_CORE_URL: http://core:18120
+      DZMM_CORE_TOKEN: ${DZMM_CORE_TOKEN:?Run python -m dzmm_bot.manage init first}
+      DZMM_WORKER_MODE: simulate
+    depends_on:
+      core:
+        condition: service_healthy
+    restart: unless-stopped

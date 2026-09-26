@@ -1,0 +1,23 @@
+[Unit]
+Description=DZMM game Core
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dzmmbot
+Group=dzmmbot
+WorkingDirectory=/srv/dzmm/app
+EnvironmentFile=/etc/dzmm/dzmm.env
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONIOENCODING=utf-8
+ExecStart=/srv/dzmm/app/.venv/bin/python -m uvicorn app:app --host 127.0.0.1 --port 18120 --no-access-log
+Restart=on-failure
+RestartSec=10
+KillSignal=SIGINT
+TimeoutStopSec=45
+KillMode=control-group
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

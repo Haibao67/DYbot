@@ -1,0 +1,62 @@
+{
+  "starting_balance": 100,
+  "relief_floor": 100,
+  "timezone": "Asia/Hong_Kong",
+  "currency": "winter_coin",
+  "tax_bps": 500,
+  "feed_price": 2,
+  "production_hours": 48,
+  "max_level": 9,
+  "capacity_base": 3,
+  "capacity_per_level": 2,
+  "upgrade_base": 200,
+  "upgrade_multiplier": 1.5,
+  "interval_level_bonus": 0.1,
+  "market_amplitude": 0.15,
+  "animals": {
+    "chicken": {
+      "space": 1,
+      "price": 50,
+      "feed": 1,
+      "hours": [
+        2,
+        4
+      ],
+      "product": "egg"
+    },
+    "sheep": {
+      "space": 2,
+      "price": 120,
+      "feed": 2,
+      "hours": [
+        10,
+        14
+      ],
+      "product": "wool"
+    },
+    "cow": {
+      "space": 3,
+      "price": 300,
+      "feed": 3,
+      "hours": [
+        6,
+        10
+      ],
+      "product": "milk"
+    }
+  },
+  "products": {
+    "egg": {
+      "price": 5,
+      "phase": 0
+    },
+    "wool": {
+      "price": 20,
+      "phase": 1.0471975511965976
+    },
+    "milk": {
+      "price": 15,
+      "phase": 2.0943951023931953
+    }
+  }
+}
