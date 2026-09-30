@@ -1,7 +1,8 @@
 """Read-only verification using immutable business snapshots."""
 import json
+from decimal import Decimal
 from sqlalchemy import select
-from dzmm_bot.domain.economy import interval, RUIHE_RANCH_VERSION, production_multiplier, production_quantity
+from dzmm_bot.domain.economy import interval, RUIHE_RANCH_VERSION, production_quantity
 from dzmm_bot.persistence.schema import events, products, configs, animals
 
 
@@ -45,25 +46,35 @@ def verify_production(db, now, player=None):
                     completion = cursor + delay * (1 - progress)
                     if completion > end:
                         break
-                    quantity = production_quantity(1, production_multiplier(snapshot.get("affection", 0),
-                        snapshot.get("feed_streak", 0), snapshot.get("premium_feed_active", False),
-                        "breeze", config["animals"][snapshot["animal_type"]]["product"]))
                     expected[sequence] = (completion, config["animals"][snapshot["animal_type"]]["product"],
-                                          snapshot["rule_version"], quantity)
+                                          snapshot["rule_version"])
                     sequence += 1
                     cursor, progress = completion, 0
             else:
                 while due <= end:
                     expected[sequence] = (due, config["animals"][snapshot["animal_type"]]["product"],
-                                          snapshot["rule_version"], 1)
+                                          snapshot["rule_version"])
                     sequence += 1
                     _, delay = interval(snapshot["seed"], sequence, snapshot["animal_type"], snapshot["interval_level"], config)
                     due += delay
-        actual = {r["sequence"]: (r["produced_at"], r["product_type"], r["config_version"], r["quantity"]) for r in
-                  db.execute(select(products).where(products.c.source_animal_id == animal_id)).mappings()}
+        actual = {}
+        quantity_mismatches = set()
+        for row in db.execute(select(products).where(products.c.source_animal_id == animal_id)).mappings():
+            # Output snapshots include rarity bonus and the exact multiplier used by
+            # the batch. Replaying those persisted facts keeps verification compatible
+            # with shiny/premium yields without rerolling randomness or needing secrets.
+            animal_count = row["animal_count"] or 1
+            computed_quantity = production_quantity(
+                (row["production_base"] + row["harvest_base_bonus"]) * animal_count,
+                Decimal(str(row["output_multiplier"])))
+            if computed_quantity != row["quantity"]:
+                quantity_mismatches.add(row["sequence"])
+            actual[row["sequence"]] = (row["produced_at"], row["product_type"],
+                                        row["config_version"])
         # Unsettled due batches are valid lazy state; persisted batches must match exactly.
         settled_sequence = db.execute(select(animals.c.sequence).where(animals.c.id == animal_id)).scalar_one()
         invalid = [sequence for sequence, row in actual.items() if expected.get(sequence) != row]
+        invalid.extend(quantity_mismatches)
         invalid.extend(sequence for sequence in expected if sequence < settled_sequence and sequence not in actual)
         if invalid:
             mismatches.append({"animal": animal_id, "sequences": invalid})

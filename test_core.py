@@ -1,10 +1,11 @@
 import asyncio
 import json
+import re
 import tempfile
 import time
 import unittest
 from pathlib import Path
-from unittest.mock import AsyncMock, Mock
+from unittest.mock import AsyncMock, Mock, patch
 
 import httpx
 from fastapi.testclient import TestClient
@@ -12,7 +13,8 @@ from sqlalchemy import select
 
 from dzmm_bot.browser import account_id, account_response
 from dzmm_bot.core import create_app
-from dzmm_bot.gateway import Gateway, normalize, send_bot
+from dzmm_bot.gateway import (Gateway, is_length_rejection, normalize,
+                              send_bot, split_long_reply)
 from dzmm_bot.settings import Settings
 from dzmm_bot.store import inbox, members, outbox
 from dzmm_bot.worker import Worker
@@ -27,6 +29,9 @@ class CoreTests(unittest.TestCase):
         self.app = create_app(self.cfg)
         self.client = TestClient(self.app)
         self.client.__enter__()
+        # Unit tests exercise scheduling in isolation; virtual-time scheduler tests
+        # cover the production 1-second global interval without wall-clock sleeps.
+        self.app.state.store.outbound_global_interval_seconds = 0
         self.addCleanup(self.client.__exit__, None, None, None)
         self.auth = {"X-Core-Token": self.cfg.core_token}
         self.admin = {"X-Admin-Token": self.cfg.admin_token}
@@ -62,7 +67,26 @@ class CoreTests(unittest.TestCase):
         first = self.claim()
         self.transition(first, "begin")
         self.transition(first, "sent", platform_id="platform-1")
-        self.assertIn("余额：⨀ 100", self.claim()["text"])
+        self.assertIn("🪙 余额：100", self.claim()["text"])
+
+    def test_long_reply_is_split_only_by_length_rejection_handler(self):
+        text = "\n".join(f"面板行 {i}" for i in range(13))
+        parts = split_long_reply(text)
+        self.assertEqual(len(parts), 2)
+        self.assertTrue(all(part.count("\n") <= 9 for part in parts))
+        self.assertEqual("\n".join(parts), text)
+        self.assertEqual(split_long_reply("短回复"), ["短回复"])
+        self.assertFalse(is_length_rejection({"success": False, "error": "请勿发送重复内容"}))
+        self.assertTrue(is_length_rejection({"success": False, "error": "换行太多了"}))
+
+    def test_long_reply_is_enqueued_as_one_original_reply(self):
+        panel = "\n".join(f"状态 {i}" for i in range(12))
+        with patch("dzmm_bot.store.CommandRouter.dispatch", return_value=panel):
+            self.receive(mid="long-panel", text="/牧场")
+        first = self.claim()
+        self.assertEqual(first["text"], panel)
+        self.assertEqual((first["reply_to_message_id"], first["reply_to_text"]), ("long-panel", "/牧场"))
+        self.assertIsNone(self.claim())
 
     def test_start_and_help_have_distinct_replies(self):
         self.receive(mid="start", text="/不存在")
@@ -122,6 +146,79 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(self.transition(task, "sent", platform_id="x").status_code, 200)
         self.assertIsNone(self.claim())
 
+    def test_failure_details_are_persisted_and_exposed_without_message_content(self):
+        self.receive(text="/牧场")
+        task = self.claim()
+        self.transition(task, "begin")
+        detail = {"transport": "socket", "platform_code": "LIMIT", "platform_error": "too many lines",
+                  "attempted_chars": 12, "attempted_line_breaks": 13}
+        response = self.transition(task, "failed", error="rejected", error_detail=detail)
+        self.assertEqual(response.status_code, 200)
+        failed = self.client.get("/admin/status", headers=self.admin).json()["failed_tasks"][-1]
+        self.assertEqual(failed["id"], task["id"])
+        recorded = failed["failure_history"][0]
+        self.assertEqual(recorded["attempt"], 1)
+        self.assertEqual(recorded["task_id"], task["id"])
+        self.assertEqual(recorded["category"], "rejected")
+        self.assertEqual(recorded["attempted_line_breaks"], 13)
+        self.assertEqual(recorded["platform_code"], "LIMIT")
+        self.assertNotIn("text", recorded)
+        self.assertNotIn("text", failed)
+        self.assertNotIn("reply_to_text", failed)
+
+    def test_performance_endpoint_requires_admin_and_bounds_sample(self):
+        self.assertEqual(self.client.get("/admin/performance").status_code, 401)
+        self.assertEqual(self.client.get("/admin/performance", headers=self.auth).status_code, 401)
+        self.assertEqual(self.client.get("/admin/performance?sample_limit=1001", headers=self.admin).status_code, 422)
+        empty = self.client.get("/admin/performance", headers=self.admin).json()
+        self.assertIsNone(empty["latency"]["sent_end_to_end"]["p50_seconds"])
+        self.receive(mid="metric", text="/帮助")
+        pending = self.client.get("/admin/performance", headers=self.admin).json()
+        self.assertEqual(pending["pending_count"], 1)
+        self.assertEqual(pending["channels"]["group"]["pending"], 1)
+
+        self.assertIsNotNone(pending["oldest_pending_seconds"])
+        task = self.claim()
+        self.transition(task, "begin")
+        self.transition(task, "simulated", error="simulation")
+        completed = self.client.get("/admin/performance?sample_limit=1", headers=self.admin).json()
+        self.assertEqual(completed["latency"]["simulated_end_to_end"]["samples"], 1)
+        self.assertEqual(completed["latency"]["sent_end_to_end"]["samples"], 0)
+        self.assertNotIn("/帮助", str(completed))
+
+    def test_admin_clear_outbound_requires_auth_and_preserves_audit_rows(self):
+        self.receive(mid="queued", text="/帮助")
+        self.assertEqual(self.client.post("/admin/outbound/clear").status_code, 401)
+        response = self.client.post("/admin/outbound/clear", headers=self.admin)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"cancelled": {"pending": 1}, "preserved": True})
+        with self.app.state.store.engine.connect() as db:
+            row = db.execute(select(outbox.c.status, outbox.c.error)).one()
+        self.assertEqual(tuple(row), ("cancelled", "operator_queue_cleared"))
+
+    def test_performance_includes_worker_limiter_snapshot_without_message_body(self):
+        limiter = {"current_interval_seconds": 4.0, "last_rate_limited_at": 1000.0,
+                   "rate_limit_events": 1, "adjustments": 2, "success_streak": 0,
+                   "cooldown_remaining_seconds": 35.0}
+        response = self.client.post("/internal/heartbeat", headers=self.auth,
+                                    json={"state": "connected", "limiter": limiter})
+        self.assertEqual(response.status_code, 200)
+        data = self.client.get("/admin/performance", headers=self.admin).json()
+        self.assertEqual(data["limiter"], limiter)
+        self.assertFalse(data["limiter_stale"])
+        self.assertNotIn("text", data["limiter"])
+
+    def test_performance_includes_bounded_inbound_latency_without_request_data(self):
+        self.receive(mid="latency-private-id", text="/帮助")
+        data = self.client.get("/admin/performance", headers=self.admin).json()
+        self.assertIn("core_lock_wait", data["inbound_latency"])
+        inbound = data["inbound_latency"]["core_inbound"]
+        self.assertEqual(inbound["samples"], 1)
+        self.assertGreaterEqual(inbound["p50_upper_bound_ms"], 1)
+        self.assertEqual(sum(inbound["bucket_counts"]), 1)
+        self.assertNotIn("latency-private-id", str(data))
+        self.assertNotIn("/帮助", str(data))
+
     def test_persistence_and_simulated_worker(self):
         self.receive()
 
@@ -147,17 +244,17 @@ class CoreTests(unittest.TestCase):
         self.cfg.mode = "live"
         self.assertEqual(self.client.post("/admin/simulate", headers=self.admin, json={"text": "/加入"}).status_code, 403)
 
-    def test_retry_is_bounded_and_cooldown_blocks_room(self):
+    def test_retry_outcome_is_terminal_and_queue_continues(self):
         self.receive()
-        for attempt in range(3):
-            task = self.claim()
-            self.transition(task, "begin")
-            self.transition(task, "retry", error="rate_limited")
-            self.assertIsNone(self.claim())
-            with self.app.state.store.engine.begin() as db:
-                db.execute(outbox.update().values(available=time.time() - 1))
+        task = self.claim()
+        self.transition(task, "begin")
+        self.transition(task, "retry", error="rate_limited")
+        self.assertIsNone(self.claim())
+        self.receive(mid="next", text="/帮助")
+        next_task = self.claim()
+        self.assertEqual(next_task["reply_to_message_id"], "next")
         status = self.client.get("/admin/status", headers=self.admin).json()
-        self.assertEqual(status["outbound"], {"failed": 1})
+        self.assertEqual(status["outbound"], {"failed": 1, "leased": 1})
 
     def test_live_worker_routes_player_replies_through_socket(self):
         self.cfg.mode = "live"
@@ -175,11 +272,13 @@ class CoreTests(unittest.TestCase):
             async with httpx.AsyncClient(transport=httpx.ASGITransport(app=self.app), base_url="http://core", headers=self.auth) as core:
                 async with httpx.AsyncClient(transport=httpx.MockTransport(upstream)) as platform:
                     worker = Worker(self.cfg, core, platform, gateway)
-                    await worker.drain_once()
-                    await worker.drain_once()
+                    for _ in range(2):
+                        await worker.drain_once()
         asyncio.run(exercise())
         self.assertEqual(gateway.send_socket.await_count, 2)
-        self.assertEqual({call.args[0]["kind"] for call in gateway.send_socket.await_args_list}, {"group", "private"})
+        kinds = [call.args[0]["kind"] for call in gateway.send_socket.await_args_list]
+        self.assertEqual(kinds.count("group"), 1)
+        self.assertEqual(kinds.count("private"), 1)
         self.assertEqual(self.client.get("/admin/status", headers=self.admin).json()["outbound"], {"sent": 2})
 
     def test_live_worker_routes_player_reply_through_socket(self):
@@ -202,6 +301,67 @@ class CoreTests(unittest.TestCase):
 
 
 class TransportTests(unittest.IsolatedAsyncioTestCase):
+    async def test_gateway_splits_only_after_explicit_length_rejection(self):
+        gateway = Gateway(Settings(), None, AsyncMock())
+        gateway.limiter.sleeper = AsyncMock()
+        gateway.own_id = "bot-user"
+        gateway.allowed = {"g1"}
+        gateway.socket = Mock(connected=True)
+        task = {"room": "g1", "kind": "group", "text": "\n".join(f"line {i}" for i in range(13)),
+                "reply_to_message_id": "source", "reply_to_sender_id": "player", "reply_to_text": "/牧场"}
+        gateway.socket.call = AsyncMock(side_effect=[
+            {"success": False, "error": "换行太多了"},
+            {"success": True}, {"success": True},
+        ])
+        outcome = await gateway.send_socket(task)
+        self.assertEqual(outcome["action"], "sent")
+        self.assertEqual(gateway.socket.call.await_count, 3)
+        for index, call in enumerate(gateway.socket.call.await_args_list):
+            content = call.args[1]["message"]["content"]
+            if index:
+                self.assertLessEqual(content["text"].count("\n"), 9)
+            if index == 0:
+                self.assertEqual(content["text"], task["text"])
+            else:
+                self.assertIn(content["text"], split_long_reply(task["text"]))
+            self.assertEqual(content["reference"]["id"], "source")
+
+    async def test_long_duplicate_rejection_splits_after_failed_send(self):
+        gateway = Gateway(Settings(), None, AsyncMock())
+        gateway.limiter.sleeper = AsyncMock()
+        gateway.own_id = "bot-user"
+        gateway.allowed = {"g1"}
+        gateway.socket = Mock(connected=True)
+        gateway.socket.call = AsyncMock(side_effect=[
+            {"success": False, "error": "请勿发送重复内容"},
+            {"success": True}, {"success": True},
+        ])
+        task = {"room": "g1", "kind": "group", "text": "\n".join(f"line {i}" for i in range(13)),
+                "reply_to_message_id": "source", "reply_to_sender_id": "player", "reply_to_text": "/牧场"}
+        outcome = await gateway.send_socket(task)
+        self.assertEqual(outcome["action"], "sent")
+        self.assertEqual(gateway.socket.call.await_count, 3)
+        sent_parts = [call.args[1]["message"]["content"] for call in gateway.socket.call.await_args_list[1:]]
+        self.assertTrue(all(part["text"].count("\n") <= 9 for part in sent_parts))
+        self.assertEqual([part["text"] for part in sent_parts], split_long_reply(task["text"]))
+        self.assertTrue(all(part["reference"]["id"] == "source" for part in sent_parts))
+
+    async def test_duplicate_content_is_sent_unchanged_and_not_retried(self):
+        gateway = Gateway(Settings(), None, AsyncMock())
+        gateway.own_id = "bot-user"
+        gateway.allowed = {"g1"}
+        gateway.socket = Mock(connected=True)
+        gateway.socket.call = AsyncMock(return_value={"success": False, "error": "请勿发送重复内容"})
+        task = {"room": "g1", "kind": "group", "text": "same content"}
+        outcome = await gateway.send_socket(task)
+        self.assertEqual((outcome["action"], outcome["error"]), ("failed", "rejected"))
+        self.assertEqual(outcome["error_detail"]["platform_error"], "请勿发送重复内容")
+        self.assertNotIn("text", outcome["error_detail"])
+        gateway.socket.call.assert_awaited_once()
+        sent_text = gateway.socket.call.await_args.args[1]["message"]["content"]["text"]
+        self.assertEqual(sent_text, task["text"])
+        self.assertEqual(outcome["error_detail"]["attempted_chars"], len(sent_text))
+
     async def test_room_requires_successful_subscription_ack(self):
         gateway = Gateway(Settings(), None, AsyncMock())
         gateway.socket = Mock(connected=True)
@@ -223,7 +383,9 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
             def handler(request):
                 self.assertEqual(request.url.path, "/api/bot/send-message")
                 self.assertEqual(request.headers["X-Bot-Token"], "test-token")
-                self.assertEqual(json.loads(request.content)["chatroom_id"], "g1")
+                payload = json.loads(request.content)
+                self.assertEqual(payload["chatroom_id"], "g1")
+                self.assertEqual(payload["content"], task["text"])
                 return httpx.Response(code, json=body)
             async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
                 outcome = await send_bot(client, cfg, task)
@@ -236,7 +398,10 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
             raise httpx.ReadTimeout("timeout")
         async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
             outcome = await send_bot(client, Settings(), {"room": "g", "text": "hi"})
-        self.assertEqual(outcome, {"action": "uncertain", "error": "transport_unknown"})
+        self.assertEqual((outcome["action"], outcome["error"]), ("uncertain", "transport_unknown"))
+        self.assertEqual(outcome["error_detail"]["transport"], "bot_http")
+        self.assertEqual(outcome["error_detail"]["exception_type"], "ReadTimeout")
+        self.assertNotIn("fallback", outcome)
 
     async def test_socket_uses_verified_identity_and_ack(self):
         gateway = Gateway(Settings(), None, AsyncMock())
@@ -251,6 +416,7 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(payload["message"]["sent_by"], "verified-account")
         self.assertEqual(payload["message"]["content"]["reference"], {
             "id": "original-1", "sentBy": "player-1", "content": {"type": "text", "text": "/帮助"}})
+        self.assertEqual(payload["message"]["content"]["text"], "hi")
         self.assertEqual(outcome["platform_id"], payload["message"]["message_id"])
 
     async def test_event_validation_and_account_parser(self):

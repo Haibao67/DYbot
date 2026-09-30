@@ -1,0 +1,2036 @@
+{
+  "version": "horse_catalog_v1",
+  "source": "赛马娘马名与五维评分汇总.md",
+  "horses": [
+    {
+      "id": "horse_001",
+      "name": "特别周",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_002",
+      "name": "无声铃鹿",
+      "scores": {
+        "speed": 10,
+        "stamina": 7,
+        "power": 8,
+        "wisdom": 8,
+        "grit": 7
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "逃"
+      ]
+    },
+    {
+      "id": "horse_003",
+      "name": "东海帝王",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_004",
+      "name": "丸善斯基",
+      "scores": {
+        "speed": 10,
+        "stamina": 7,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 7
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "逃",
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_005",
+      "name": "富士奇石",
+      "scores": {
+        "speed": 9,
+        "stamina": 7,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 7
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_006",
+      "name": "小栗帽",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 10,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "中距",
+        "泥地"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_007",
+      "name": "黄金船",
+      "scores": {
+        "speed": 8,
+        "stamina": 10,
+        "power": 9,
+        "wisdom": 6,
+        "grit": 10
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_008",
+      "name": "伏特加",
+      "scores": {
+        "speed": 9,
+        "stamina": 7,
+        "power": 10,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "差"
+      ]
+    },
+    {
+      "id": "horse_009",
+      "name": "大和赤骥",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "逃",
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_010",
+      "name": "大树快车",
+      "scores": {
+        "speed": 10,
+        "stamina": 5,
+        "power": 10,
+        "wisdom": 8,
+        "grit": 7
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_011",
+      "name": "草上飞",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_012",
+      "name": "菱亚马逊",
+      "scores": {
+        "speed": 9,
+        "stamina": 7,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_013",
+      "name": "目白麦昆",
+      "scores": {
+        "speed": 8,
+        "stamina": 10,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_014",
+      "name": "神鹰",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距",
+        "泥地"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_015",
+      "name": "好歌剧",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_016",
+      "name": "成田白仁",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_017",
+      "name": "鲁道夫象征",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 10,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_018",
+      "name": "气槽",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_019",
+      "name": "爱丽数码",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距",
+        "泥地"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_020",
+      "name": "星云天空",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 7,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "逃"
+      ]
+    },
+    {
+      "id": "horse_021",
+      "name": "玉藻十字",
+      "scores": {
+        "speed": 9,
+        "stamina": 10,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_022",
+      "name": "美妙姿势",
+      "scores": {
+        "speed": 9,
+        "stamina": 7,
+        "power": 9,
+        "wisdom": 10,
+        "grit": 7
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_023",
+      "name": "琵琶晨光",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_024",
+      "name": "重炮",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 8,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "逃",
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_025",
+      "name": "曼城茶座",
+      "scores": {
+        "speed": 8,
+        "stamina": 10,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "长距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_026",
+      "name": "美浦波旁",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "逃"
+      ]
+    },
+    {
+      "id": "horse_027",
+      "name": "目白赖恩",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_028",
+      "name": "菱曙",
+      "scores": {
+        "speed": 9,
+        "stamina": 6,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_029",
+      "name": "雪之美人",
+      "scores": {
+        "speed": 8,
+        "stamina": 7,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_030",
+      "name": "米浴",
+      "scores": {
+        "speed": 8,
+        "stamina": 10,
+        "power": 8,
+        "wisdom": 8,
+        "grit": 10
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_031",
+      "name": "艾尼斯风神",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 8,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "逃"
+      ]
+    },
+    {
+      "id": "horse_032",
+      "name": "爱丽速子",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 8,
+        "wisdom": 10,
+        "grit": 7
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_033",
+      "name": "爱慕织姬",
+      "scores": {
+        "speed": 9,
+        "stamina": 7,
+        "power": 10,
+        "wisdom": 8,
+        "grit": 7
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_034",
+      "name": "稻荷一",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 10
+      },
+      "race_options": [
+        "中距",
+        "长距",
+        "泥地"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_035",
+      "name": "胜利奖券",
+      "scores": {
+        "speed": 8,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 7,
+        "grit": 10
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_036",
+      "name": "空中神宫",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 8,
+        "wisdom": 10,
+        "grit": 7
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_037",
+      "name": "荣进闪耀",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 10,
+        "grit": 7
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "差"
+      ]
+    },
+    {
+      "id": "horse_038",
+      "name": "真机伶",
+      "scores": {
+        "speed": 10,
+        "stamina": 4,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 7
+      },
+      "race_options": [
+        "短距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_039",
+      "name": "川上公主",
+      "scores": {
+        "speed": 8,
+        "stamina": 8,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 10
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_040",
+      "name": "黄金城市",
+      "scores": {
+        "speed": 8,
+        "stamina": 7,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_041",
+      "name": "樱花进王",
+      "scores": {
+        "speed": 10,
+        "stamina": 3,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "短距"
+      ],
+      "style_options": [
+        "逃",
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_042",
+      "name": "采珠",
+      "scores": {
+        "speed": 10,
+        "stamina": 5,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 7
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_043",
+      "name": "新光风",
+      "scores": {
+        "speed": 8,
+        "stamina": 7,
+        "power": 9,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "泥地"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_044",
+      "name": "东商变革",
+      "scores": {
+        "speed": 9,
+        "stamina": 7,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_045",
+      "name": "超级小海湾",
+      "scores": {
+        "speed": 7,
+        "stamina": 10,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_046",
+      "name": "醒目飞鹰",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距",
+        "泥地"
+      ],
+      "style_options": [
+        "逃"
+      ]
+    },
+    {
+      "id": "horse_047",
+      "name": "荒漠英雄",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_048",
+      "name": "东瀛佐敦",
+      "scores": {
+        "speed": 8,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 7,
+        "grit": 8
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_049",
+      "name": "中山庆典",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 7,
+        "grit": 10
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_050",
+      "name": "成田大进",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 7
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "追"
+      ]
+    },
+    {
+      "id": "horse_051",
+      "name": "西野花",
+      "scores": {
+        "speed": 10,
+        "stamina": 5,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 7
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_052",
+      "name": "春乌拉拉",
+      "scores": {
+        "speed": 7,
+        "stamina": 6,
+        "power": 7,
+        "wisdom": 7,
+        "grit": 10
+      },
+      "race_options": [
+        "短距",
+        "英里",
+        "泥地"
+      ],
+      "style_options": [
+        "差"
+      ]
+    },
+    {
+      "id": "horse_053",
+      "name": "青竹回忆",
+      "scores": {
+        "speed": 9,
+        "stamina": 6,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_054",
+      "name": "微光飞驹",
+      "scores": {
+        "speed": 10,
+        "stamina": 5,
+        "power": 8,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_055",
+      "name": "美丽周日",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 8,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_056",
+      "name": "待兼福来",
+      "scores": {
+        "speed": 8,
+        "stamina": 8,
+        "power": 8,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_057",
+      "name": "千明代表",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_058",
+      "name": "名将怒涛",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_059",
+      "name": "目白多伯",
+      "scores": {
+        "speed": 9,
+        "stamina": 7,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 7
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "差"
+      ]
+    },
+    {
+      "id": "horse_060",
+      "name": "目白善信",
+      "scores": {
+        "speed": 8,
+        "stamina": 10,
+        "power": 7,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "逃"
+      ]
+    },
+    {
+      "id": "horse_061",
+      "name": "大拓太阳神",
+      "scores": {
+        "speed": 10,
+        "stamina": 6,
+        "power": 8,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "英里"
+      ],
+      "style_options": [
+        "逃",
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_062",
+      "name": "双涡轮",
+      "scores": {
+        "speed": 10,
+        "stamina": 6,
+        "power": 7,
+        "wisdom": 5,
+        "grit": 10
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "逃"
+      ]
+    },
+    {
+      "id": "horse_063",
+      "name": "里见光钻",
+      "scores": {
+        "speed": 8,
+        "stamina": 10,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_064",
+      "name": "北部玄驹",
+      "scores": {
+        "speed": 9,
+        "stamina": 10,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "逃",
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_065",
+      "name": "樱花千代王",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 8,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_066",
+      "name": "天狼星象征",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_067",
+      "name": "目白阿尔丹",
+      "scores": {
+        "speed": 8,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 7
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_068",
+      "name": "八重无敌",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_069",
+      "name": "目白光明",
+      "scores": {
+        "speed": 7,
+        "stamina": 10,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 9
+      },
+      "race_options": [
+        "长距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_070",
+      "name": "成田路",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_071",
+      "name": "樱花桂冠",
+      "scores": {
+        "speed": 8,
+        "stamina": 10,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 9
+      },
+      "race_options": [
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_072",
+      "name": "也文摄辉",
+      "scores": {
+        "speed": 10,
+        "stamina": 5,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 7
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_073",
+      "name": "东瀛麦肯",
+      "scores": {
+        "speed": 10,
+        "stamina": 5,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 7
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "逃",
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_074",
+      "name": "北港火山",
+      "scores": {
+        "speed": 8,
+        "stamina": 8,
+        "power": 10,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距",
+        "泥地"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_075",
+      "name": "小林历奇",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 10,
+        "grit": 7
+      },
+      "race_options": [
+        "英里",
+        "中距",
+        "泥地"
+      ],
+      "style_options": [
+        "逃",
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_076",
+      "name": "奇锐骏",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 10
+      },
+      "race_options": [
+        "中距",
+        "泥地"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_077",
+      "name": "第一红宝石",
+      "scores": {
+        "speed": 10,
+        "stamina": 5,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 7
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "差"
+      ]
+    },
+    {
+      "id": "horse_078",
+      "name": "目白拉莫努",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 10,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_079",
+      "name": "葛城王牌",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "逃",
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_080",
+      "name": "新宇宙",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 8,
+        "wisdom": 10,
+        "grit": 7
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_081",
+      "name": "菱钻奇宝",
+      "scores": {
+        "speed": 7,
+        "stamina": 10,
+        "power": 8,
+        "wisdom": 8,
+        "grit": 10
+      },
+      "race_options": [
+        "长距"
+      ],
+      "style_options": [
+        "差"
+      ]
+    },
+    {
+      "id": "horse_082",
+      "name": "谷野美酒",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "差"
+      ]
+    },
+    {
+      "id": "horse_083",
+      "name": "森林宝穴",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 10,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "差"
+      ]
+    },
+    {
+      "id": "horse_084",
+      "name": "地球之音",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_085",
+      "name": "大鸣大放",
+      "scores": {
+        "speed": 10,
+        "stamina": 8,
+        "power": 10,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_086",
+      "name": "高尚骏逸",
+      "scores": {
+        "speed": 8,
+        "stamina": 10,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_089",
+      "name": "黄金巨匠",
+      "scores": {
+        "speed": 10,
+        "stamina": 10,
+        "power": 10,
+        "wisdom": 7,
+        "grit": 10
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_090",
+      "name": "贵妇人",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 10,
+        "wisdom": 9,
+        "grit": 10
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_091",
+      "name": "梦之旅",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_093",
+      "name": "西沙里奥",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_094",
+      "name": "莱茵力量",
+      "scores": {
+        "speed": 10,
+        "stamina": 6,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_096",
+      "name": "北方飞翔",
+      "scores": {
+        "speed": 10,
+        "stamina": 6,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "英里"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_100",
+      "name": "创世驹",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 10,
+        "wisdom": 9,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_101",
+      "name": "杏目",
+      "scores": {
+        "speed": 10,
+        "stamina": 8,
+        "power": 10,
+        "wisdom": 10,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_102",
+      "name": "放声欢呼",
+      "scores": {
+        "speed": 10,
+        "stamina": 6,
+        "power": 10,
+        "wisdom": 9,
+        "grit": 9
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_103",
+      "name": "旺紫丁香",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_104",
+      "name": "唯独爱你",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 10,
+        "grit": 8
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_105",
+      "name": "黄金旅程",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 10
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_106",
+      "name": "超常骏骥",
+      "scores": {
+        "speed": 8,
+        "stamina": 10,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_107",
+      "name": "吹波糖",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_108",
+      "name": "迷人景致",
+      "scores": {
+        "speed": 9,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 9,
+        "grit": 9
+      },
+      "race_options": [
+        "英里",
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "差",
+        "追"
+      ]
+    },
+    {
+      "id": "horse_109",
+      "name": "信念",
+      "scores": {
+        "speed": 10,
+        "stamina": 5,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "短距",
+        "英里"
+      ],
+      "style_options": [
+        "先行"
+      ]
+    },
+    {
+      "id": "horse_110",
+      "name": "无理由",
+      "scores": {
+        "speed": 8,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 7,
+        "grit": 9
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_111",
+      "name": "比萨胜驹",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 10,
+        "wisdom": 8,
+        "grit": 9
+      },
+      "race_options": [
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_112",
+      "name": "房一潘多拉",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_113",
+      "name": "红色梦想",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "差"
+      ]
+    },
+    {
+      "id": "horse_114",
+      "name": "统治地位",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 10,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_115",
+      "name": "玫瑰帝国",
+      "scores": {
+        "speed": 8,
+        "stamina": 9,
+        "power": 9,
+        "wisdom": 8,
+        "grit": 8
+      },
+      "race_options": [
+        "中距",
+        "长距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    },
+    {
+      "id": "horse_116",
+      "name": "蝴蝶兰",
+      "scores": {
+        "speed": 9,
+        "stamina": 8,
+        "power": 8,
+        "wisdom": 9,
+        "grit": 8
+      },
+      "race_options": [
+        "英里",
+        "中距"
+      ],
+      "style_options": [
+        "先行",
+        "差"
+      ]
+    }
+  ],
+  "pending_chinese_name_ids": [
+    "horse_087",
+    "horse_088",
+    "horse_092",
+    "horse_095",
+    "horse_097",
+    "horse_098",
+    "horse_099"
+  ]
+}

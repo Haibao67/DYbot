@@ -1,0 +1,32 @@
+{
+  "version": "1.6.0",
+  "published_date": "2026-09-26",
+  "title": "玩家可见的更新主题",
+  "theme": "✨",
+  "summary": "用一句轻松的话告诉玩家这次可以体验什么。",
+  "features": [
+    {
+      "id": "example_feature",
+      "name": "功能名称",
+      "emoji": "✨",
+      "short_description": "公告中显示的一句话介绍。",
+      "details": "简短说明玩法流程。",
+      "commands": ["/功能指令"],
+      "tips": ["一条实际玩法提示。"],
+      "trigger_commands": ["/牧场"],
+      "onboarding_tip": "告诉玩家如何开始体验。"
+    }
+  ],
+  "commands": [
+    {"command": "/功能指令", "description": "查看或使用该功能"}
+  ],
+  "tips": ["提示一", "提示二"],
+  "closing": "祝各位老板玩得开心！",
+  "changelog": {
+    "added": ["管理员可见的新增说明"],
+    "changed": [],
+    "fixed": [],
+    "migration": [],
+    "known_issues": []
+  }
+}

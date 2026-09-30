@@ -1,0 +1,1252 @@
+{
+  "version": "P8-Skill-V1",
+  "random_skill_level_weights": {
+    "1": 30,
+    "2": 27,
+    "3": 22,
+    "4": 14,
+    "5": 7
+  },
+  "skills": [
+    {
+      "skill_id": "P01",
+      "display_name": "疾行短驹",
+      "type": "PASSIVE",
+      "tags": [
+        "distance.short",
+        "effect.speed"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "速度发挥 +1.5%"
+        ],
+        "5": [
+          "+3.0%"
+        ],
+        "10": [
+          "+5.0%"
+        ]
+      },
+      "source_rules": "## P01 · 疾行短驹\n\n**类型：** PASSIVE  \n**标签：** `distance.short` `effect.speed`  \n**适用：** 短距\n\n效果：\n\n```text\n仅短距比赛生效。\n提高基础巡航速度发挥。\n```\n\n| 等级 | 效果 |\n|---|---:|\n| Lv1 | 速度发挥 +1.5% |\n| Lv5 | +3.0% |\n| Lv10 | +5.0% |\n\n文字提示：\n\n```text\n⚡【疾行短驹】生效\n星河似乎很适应这种短促而高速的节奏。\n```\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P02",
+      "display_name": "英里节拍",
+      "type": "PASSIVE",
+      "tags": [
+        "distance.mile",
+        "effect.speed",
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+1.0%",
+          "-1.0%"
+        ],
+        "5": [
+          "+2.5%",
+          "-2.5%"
+        ],
+        "10": [
+          "+4.0%",
+          "-4.0%"
+        ]
+      },
+      "source_rules": "## P02 · 英里节拍\n\n**类型：** PASSIVE  \n**标签：** `distance.mile` `effect.speed` `effect.stamina`\n\n仅英里比赛生效。\n\n| 等级 | 速度发挥 | 体力消耗 |\n|---|---:|---:|\n| Lv1 | +1.0% | -1.0% |\n| Lv5 | +2.5% | -2.5% |\n| Lv10 | +4.0% | -4.0% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P03",
+      "display_name": "中程韵律",
+      "type": "PASSIVE",
+      "tags": [
+        "distance.medium",
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "-2.0%"
+        ],
+        "5": [
+          "-4.0%"
+        ],
+        "10": [
+          "-6.5%"
+        ]
+      },
+      "source_rules": "## P03 · 中程韵律\n\n**类型：** PASSIVE  \n**标签：** `distance.medium` `effect.stamina`\n\n中距比赛中提高节奏稳定与体力效率。\n\n| 等级 | 体力消耗 |\n|---|---:|\n| Lv1 | -2.0% |\n| Lv5 | -4.0% |\n| Lv10 | -6.5% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P04",
+      "display_name": "长路呼吸",
+      "type": "PASSIVE",
+      "tags": [
+        "distance.long",
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "-2.5%"
+        ],
+        "5": [
+          "-5.0%"
+        ],
+        "10": [
+          "-8.0%"
+        ]
+      },
+      "source_rules": "## P04 · 长路呼吸\n\n**类型：** PASSIVE  \n**标签：** `distance.long` `effect.stamina`\n\n长距离比赛生效。\n\n| 等级 | 体力消耗 |\n|---|---:|\n| Lv1 | -2.5% |\n| Lv5 | -5.0% |\n| Lv10 | -8.0% |\n\n说明：\n\n> 长距技能允许比其他被动拥有略高的体力收益，因为长距比赛中耐力压力明显更大。\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P05",
+      "display_name": "草地步感",
+      "type": "PASSIVE",
+      "tags": [
+        "surface.turf",
+        "effect.acceleration"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+1.5%"
+        ],
+        "5": [
+          "+3.5%"
+        ],
+        "10": [
+          "+5.5%"
+        ]
+      },
+      "source_rules": "## P05 · 草地步感\n\n**类型：** PASSIVE  \n**标签：** `surface.turf` `effect.acceleration`\n\n草地生效。\n\n| 等级 | 加速度 |\n|---|---:|\n| Lv1 | +1.5% |\n| Lv5 | +3.5% |\n| Lv10 | +5.5% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P06",
+      "display_name": "泥地抓力",
+      "type": "PASSIVE",
+      "tags": [
+        "surface.dirt",
+        "effect.acceleration",
+        "effect.overtake"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+1.5%",
+          "+1%"
+        ],
+        "5": [
+          "+3.5%",
+          "+3%"
+        ],
+        "10": [
+          "+5.5%",
+          "+5%"
+        ]
+      },
+      "source_rules": "## P06 · 泥地抓力\n\n**类型：** PASSIVE  \n**标签：** `surface.dirt` `effect.acceleration` `effect.overtake`\n\n泥地生效。\n\n| 等级 | 加速度 | 超车能力 |\n|---|---:|---:|\n| Lv1 | +1.5% | +1% |\n| Lv5 | +3.5% | +3% |\n| Lv10 | +5.5% | +5% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P07",
+      "display_name": "重场耐受",
+      "type": "PASSIVE",
+      "tags": [
+        "track.heavy",
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "4%"
+        ],
+        "5": [
+          "8%"
+        ],
+        "10": [
+          "12%"
+        ]
+      },
+      "source_rules": "## P07 · 重场耐受\n\n**类型：** PASSIVE  \n**标签：** `track.heavy` `effect.stamina`\n\n在“重 / 不良”赛道状态生效。\n\n| 等级 | 额外体力消耗降低 |\n|---|---:|\n| Lv1 | 4% |\n| Lv5 | 8% |\n| Lv10 | 12% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P08",
+      "display_name": "领放节律",
+      "type": "PASSIVE",
+      "tags": [
+        "style.front",
+        "effect.stamina",
+        "effect.position"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "-1.5%",
+          "+1%"
+        ],
+        "5": [
+          "-3.5%",
+          "+3%"
+        ],
+        "10": [
+          "-6.0%",
+          "+5%"
+        ]
+      },
+      "source_rules": "## P08 · 领放节律\n\n**类型：** PASSIVE  \n**标签：** `style.front` `effect.stamina` `effect.position`\n\n仅选择“逃”跑法时生效。\n\n| 等级 | 前半程体力消耗 | 位置控制 |\n|---|---:|---:|\n| Lv1 | -1.5% | +1% |\n| Lv5 | -3.5% | +3% |\n| Lv10 | -6.0% | +5% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P09",
+      "display_name": "前列稳压",
+      "type": "PASSIVE",
+      "tags": [
+        "style.pace",
+        "effect.position"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+2%"
+        ],
+        "5": [
+          "+5%"
+        ],
+        "10": [
+          "+8%"
+        ]
+      },
+      "source_rules": "## P09 · 前列稳压\n\n**类型：** PASSIVE  \n**标签：** `style.pace` `effect.position`\n\n仅“先行”。\n\n| 等级 | 前集团位置控制 |\n|---|---:|\n| Lv1 | +2% |\n| Lv5 | +5% |\n| Lv10 | +8% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P10",
+      "display_name": "蓄势待发",
+      "type": "PASSIVE",
+      "tags": [
+        "style.late",
+        "effect.stamina",
+        "effect.overtake"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "-1%",
+          "+1%"
+        ],
+        "5": [
+          "-2.5%",
+          "+3%"
+        ],
+        "10": [
+          "-4%",
+          "+5%"
+        ]
+      },
+      "source_rules": "## P10 · 蓄势待发\n\n**类型：** PASSIVE  \n**标签：** `style.late` `effect.stamina` `effect.overtake`\n\n仅“差”。\n\n| 等级 | 前中盘体力消耗 | 后程超车 |\n|---|---:|---:|\n| Lv1 | -1% | +1% |\n| Lv5 | -2.5% | +3% |\n| Lv10 | -4% | +5% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P11",
+      "display_name": "后程潜伏",
+      "type": "PASSIVE",
+      "tags": [
+        "style.closer",
+        "effect.stamina",
+        "effect.grit"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "-1.5%",
+          "+1%"
+        ],
+        "5": [
+          "-3%",
+          "+3%"
+        ],
+        "10": [
+          "-5%",
+          "+5%"
+        ]
+      },
+      "source_rules": "## P11 · 后程潜伏\n\n**类型：** PASSIVE  \n**标签：** `style.closer` `effect.stamina` `effect.grit`\n\n仅“追”。\n\n| 等级 | 前半程体力消耗 | 最终阶段毅力发挥 |\n|---|---:|---:|\n| Lv1 | -1.5% | +1% |\n| Lv5 | -3% | +3% |\n| Lv10 | -5% | +5% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P12",
+      "display_name": "轻盈转身",
+      "type": "PASSIVE",
+      "tags": [
+        "phase.corner",
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "-3%"
+        ],
+        "5": [
+          "-6%"
+        ],
+        "10": [
+          "-10%"
+        ]
+      },
+      "source_rules": "## P12 · 轻盈转身\n\n**类型：** PASSIVE  \n**标签：** `phase.corner` `effect.stamina`\n\n所有弯道阶段：\n\n| 等级 | 弯道体力消耗 |\n|---|---:|\n| Lv1 | -3% |\n| Lv5 | -6% |\n| Lv10 | -10% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P13",
+      "display_name": "强健心肺",
+      "type": "PASSIVE",
+      "tags": [
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "-1%"
+        ],
+        "5": [
+          "-2.5%"
+        ],
+        "10": [
+          "-4%"
+        ]
+      },
+      "source_rules": "## P13 · 强健心肺\n\n**类型：** PASSIVE  \n**标签：** `effect.stamina`\n\n全程生效，但数值较低。\n\n| 等级 | 全程体力消耗 |\n|---|---:|\n| Lv1 | -1% |\n| Lv5 | -2.5% |\n| Lv10 | -4% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P14",
+      "display_name": "弯道支撑",
+      "type": "PASSIVE",
+      "tags": [
+        "phase.corner",
+        "effect.acceleration"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+2%"
+        ],
+        "5": [
+          "+4%"
+        ],
+        "10": [
+          "+7%"
+        ]
+      },
+      "source_rules": "## P14 · 弯道支撑\n\n**类型：** PASSIVE  \n**标签：** `phase.corner` `effect.acceleration`\n\n弯道与出弯阶段：\n\n| 等级 | 力量/加速度发挥 |\n|---|---:|\n| Lv1 | +2% |\n| Lv5 | +4% |\n| Lv10 | +7% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P15",
+      "display_name": "末段韧性",
+      "type": "PASSIVE",
+      "tags": [
+        "phase.final_straight",
+        "effect.grit"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "5%"
+        ],
+        "5": [
+          "10%"
+        ],
+        "10": [
+          "16%"
+        ]
+      },
+      "source_rules": "## P15 · 末段韧性\n\n**类型：** PASSIVE  \n**标签：** `phase.final_straight` `effect.grit`\n\n当体力低于 20% 时生效。\n\n| 等级 | 低体力速度衰减降低 |\n|---|---:|\n| Lv1 | 5% |\n| Lv5 | 10% |\n| Lv10 | 16% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "P16",
+      "display_name": "对抗本能",
+      "type": "PASSIVE",
+      "tags": [
+        "phase.finish",
+        "effect.grit"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+3%"
+        ],
+        "5": [
+          "+7%"
+        ],
+        "10": [
+          "+12%"
+        ]
+      },
+      "source_rules": "## P16 · 对抗本能\n\n**类型：** PASSIVE  \n**标签：** `phase.finish` `effect.grit`\n\n进入 `head_to_head` 时：\n\n| 等级 | 毅力有效值 |\n|---|---:|\n| Lv1 | +3% |\n| Lv5 | +7% |\n| Lv10 | +12% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C01",
+      "display_name": "破闸",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.start",
+        "effect.acceleration"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "+4%"
+        ],
+        "5": [
+          "+8%"
+        ],
+        "10": [
+          "+13%"
+        ]
+      },
+      "source_rules": "## C01 · 破闸\n\n**标签：** `phase.start` `effect.acceleration`\n\n触发：\n\n```text\n比赛开始\n+\n起步没有发生严重失误\n```\n\n效果持续：\n\n```text\n起步阶段\n```\n\n| 等级 | 起步加速度 |\n|---|---:|\n| Lv1 | +4% |\n| Lv5 | +8% |\n| Lv10 | +13% |\n\n每场最多：1 次  \n随机补位池：✅\n\n直播：\n\n```text\n✨【破闸 Lv6】发动！\n星河几乎在闸门打开的瞬间冲了出去！\n```\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C02",
+      "display_name": "抢位先锋",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.opening",
+        "style.front",
+        "style.pace",
+        "effect.position"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+4%",
+          "+2%"
+        ],
+        "5": [
+          "+8%",
+          "+1%"
+        ],
+        "10": [
+          "+13%",
+          "0%"
+        ]
+      },
+      "source_rules": "## C02 · 抢位先锋\n\n**标签：** `phase.opening` `style.front` `style.pace` `effect.position`\n\n触发：\n\n```text\n前段抢位\n+\n使用逃或先行\n+\n当前未进入目标位置区间\n```\n\n| 等级 | 位置推进 | 额外体力成本 |\n|---|---:|---:|\n| Lv1 | +4% | +2% |\n| Lv5 | +8% | +1% |\n| Lv10 | +13% | 0% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C03",
+      "display_name": "独走定调",
+      "type": "CONDITIONAL",
+      "tags": [
+        "style.front",
+        "phase.mid",
+        "effect.speed"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+2%"
+        ],
+        "5": [
+          "+4.5%"
+        ],
+        "10": [
+          "+7%"
+        ]
+      },
+      "source_rules": "## C03 · 独走定调\n\n**标签：** `style.front` `phase.mid` `effect.speed`\n\n触发：\n\n```text\n逃\n+\n中盘\n+\n当前第1\n+\n领先第二名达到小幅安全距离\n```\n\n| 等级 | 中盘速度发挥 |\n|---|---:|\n| Lv1 | +2% |\n| Lv5 | +4.5% |\n| Lv10 | +7% |\n\n每场最多：1 次  \n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C04",
+      "display_name": "紧随其后",
+      "type": "CONDITIONAL",
+      "tags": [
+        "style.pace",
+        "phase.mid",
+        "effect.speed"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+2%"
+        ],
+        "5": [
+          "+4%"
+        ],
+        "10": [
+          "+6.5%"
+        ]
+      },
+      "source_rules": "## C04 · 紧随其后\n\n**标签：** `style.pace` `phase.mid` `effect.speed`\n\n触发：\n\n```text\n先行\n+\n处于前40%\n+\n与领先者差距不大\n```\n\n| 等级 | 速度发挥 |\n|---|---:|\n| Lv1 | +2% |\n| Lv5 | +4% |\n| Lv10 | +6.5% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C05",
+      "display_name": "中盘换挡",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.mid",
+        "effect.speed"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+3%"
+        ],
+        "5": [
+          "+6%"
+        ],
+        "10": [
+          "+9%"
+        ]
+      },
+      "source_rules": "## C05 · 中盘换挡\n\n**标签：** `phase.mid` `effect.speed`\n\n触发：\n\n```text\n中盘后半\n+\n当前体力 >= 55%\n```\n\n| 等级 | 短时速度发挥 |\n|---|---:|\n| Lv1 | +3% |\n| Lv5 | +6% |\n| Lv10 | +9% |\n\n持续：1 Checkpoint  \n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C06",
+      "display_name": "稳态呼吸",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.mid",
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "1.5%"
+        ],
+        "5": [
+          "3.5%"
+        ],
+        "10": [
+          "5.5%"
+        ]
+      },
+      "source_rules": "## C06 · 稳态呼吸\n\n**标签：** `phase.mid` `effect.stamina`\n\n触发：\n\n```text\n中盘\n+\n连续两个 Checkpoint 未超车、未被堵、未过速\n```\n\n| 等级 | 最大体力恢复 |\n|---|---:|\n| Lv1 | 1.5% |\n| Lv5 | 3.5% |\n| Lv10 | 5.5% |\n\n每场最多：1 次  \n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C07",
+      "display_name": "弯道突进",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.corner",
+        "effect.acceleration"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "+4%"
+        ],
+        "5": [
+          "+8%"
+        ],
+        "10": [
+          "+12%"
+        ]
+      },
+      "source_rules": "## C07 · 弯道突进\n\n**标签：** `phase.corner` `effect.acceleration`\n\n触发：\n\n```text\n进入主要弯道\n+\n当前不是第一名\n```\n\n| 等级 | 加速度 |\n|---|---:|\n| Lv1 | +4% |\n| Lv5 | +8% |\n| Lv10 | +12% |\n\n持续：1 Checkpoint  \n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C08",
+      "display_name": "出弯再加速",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.corner",
+        "effect.acceleration"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+5%"
+        ],
+        "5": [
+          "+10%"
+        ],
+        "10": [
+          "+16%"
+        ]
+      },
+      "source_rules": "## C08 · 出弯再加速\n\n**标签：** `phase.corner` `effect.acceleration`\n\n触发：\n\n```text\n离开弯道\n+\n当前速度低于 target_speed\n```\n\n| 等级 | 恢复目标速度的加速度 |\n|---|---:|\n| Lv1 | +5% |\n| Lv5 | +10% |\n| Lv10 | +16% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C09",
+      "display_name": "外道强攻",
+      "type": "CONDITIONAL",
+      "tags": [
+        "effect.overtake",
+        "phase.corner"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+4%"
+        ],
+        "5": [
+          "+8%"
+        ],
+        "10": [
+          "+13%"
+        ]
+      },
+      "source_rules": "## C09 · 外道强攻\n\n**标签：** `effect.overtake` `phase.corner`\n\n触发：\n\n```text\n位于外侧路线\n+\n尝试超车\n```\n\n| 等级 | 超车判定 |\n|---|---:|\n| Lv1 | +4% |\n| Lv5 | +8% |\n| Lv10 | +13% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C10",
+      "display_name": "受阻爆发",
+      "type": "CONDITIONAL",
+      "tags": [
+        "effect.block",
+        "effect.acceleration"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+5%"
+        ],
+        "5": [
+          "+10%"
+        ],
+        "10": [
+          "+15%"
+        ]
+      },
+      "source_rules": "## C10 · 受阻爆发\n\n**标签：** `effect.block` `effect.acceleration`\n\n触发：\n\n```text\n本场首次 blocked 状态解除\n```\n\n| 等级 | 解堵后加速度 |\n|---|---:|\n| Lv1 | +5% |\n| Lv5 | +10% |\n| Lv10 | +15% |\n\n持续：1 Checkpoint  \n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C11",
+      "display_name": "越位连贯",
+      "type": "CONDITIONAL",
+      "tags": [
+        "effect.overtake",
+        "effect.speed"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+2%"
+        ],
+        "5": [
+          "+4.5%"
+        ],
+        "10": [
+          "+7.5%"
+        ]
+      },
+      "source_rules": "## C11 · 越位连贯\n\n**标签：** `effect.overtake` `effect.speed`\n\n触发：\n\n```text\n成功完成一次超车\n+\n仍处于比赛后半程\n```\n\n| 等级 | 下一次超车前速度发挥 |\n|---|---:|\n| Lv1 | +2% |\n| Lv5 | +4.5% |\n| Lv10 | +7.5% |\n\n持续：1 Checkpoint  \n每场最多：2 次  \n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C12",
+      "display_name": "反超冲动",
+      "type": "CONDITIONAL",
+      "tags": [
+        "effect.acceleration",
+        "phase.mid"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+3%"
+        ],
+        "5": [
+          "+6%"
+        ],
+        "10": [
+          "+10%"
+        ]
+      },
+      "source_rules": "## C12 · 反超冲动\n\n**标签：** `effect.acceleration` `phase.mid`\n\n触发：\n\n```text\n中盘或后半程\n+\n刚刚被其他马超越\n```\n\n| 等级 | 加速度 |\n|---|---:|\n| Lv1 | +3% |\n| Lv5 | +6% |\n| Lv10 | +10% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C13",
+      "display_name": "最终弯道蓄势",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.final_corner",
+        "effect.speed",
+        "effect.acceleration"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+3%",
+          "+1%"
+        ],
+        "5": [
+          "+6%",
+          "+2.5%"
+        ],
+        "10": [
+          "+10%",
+          "+4%"
+        ]
+      },
+      "source_rules": "## C13 · 最终弯道蓄势\n\n**标签：** `phase.final_corner` `effect.speed` `effect.acceleration`\n\n触发：\n\n```text\n最终弯道\n+\n当前排名处于中游或后方\n```\n\n| 等级 | 加速度 | 速度发挥 |\n|---|---:|---:|\n| Lv1 | +3% | +1% |\n| Lv5 | +6% | +2.5% |\n| Lv10 | +10% | +4% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C14",
+      "display_name": "末脚爆发",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.final_straight",
+        "effect.speed"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "+3%"
+        ],
+        "5": [
+          "+6%"
+        ],
+        "10": [
+          "+10%"
+        ]
+      },
+      "source_rules": "## C14 · 末脚爆发\n\n**标签：** `phase.final_straight` `effect.speed`\n\n触发：\n\n```text\n进入最后直线\n+\n剩余体力 > 10%\n```\n\n| 等级 | 最后直线速度发挥 |\n|---|---:|\n| Lv1 | +3% |\n| Lv5 | +6% |\n| Lv10 | +10% |\n\n每场最多：1 次  \n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C15",
+      "display_name": "不屈余火",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.final_straight",
+        "effect.grit"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "8%"
+        ],
+        "5": [
+          "16%"
+        ],
+        "10": [
+          "25%"
+        ]
+      },
+      "source_rules": "## C15 · 不屈余火\n\n**标签：** `phase.final_straight` `effect.grit`\n\n触发：\n\n```text\n最后直线\n+\n体力 <= 10%\n```\n\n| 等级 | 低体力衰减降低 |\n|---|---:|\n| Lv1 | 8% |\n| Lv5 | 16% |\n| Lv10 | 25% |\n\n每场最多：1 次  \n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "C16",
+      "display_name": "决胜一线",
+      "type": "CONDITIONAL",
+      "tags": [
+        "phase.finish",
+        "effect.speed",
+        "effect.grit"
+      ],
+      "inheritance_random_pool": false,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+2%",
+          "+3%"
+        ],
+        "5": [
+          "+4%",
+          "+7%"
+        ],
+        "10": [
+          "+6%",
+          "+12%"
+        ]
+      },
+      "source_rules": "## C16 · 决胜一线\n\n**标签：** `phase.finish` `effect.speed` `effect.grit`\n\n触发：\n\n```text\n最后100m\n+\n与前后任意一匹马进入 head_to_head\n```\n\n| 等级 | 速度发挥 | 毅力发挥 |\n|---|---:|---:|\n| Lv1 | +2% | +3% |\n| Lv5 | +4% | +7% |\n| Lv10 | +6% | +12% |\n\n每场最多：1 次  \n随机补位池：❌  \n定位：高价值血统/未来赛事奖励候选。\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W01",
+      "display_name": "冷静起步",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "phase.start",
+        "effect.wisdom"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "30%"
+        ],
+        "5": [
+          "55%"
+        ],
+        "10": [
+          "85%"
+        ]
+      },
+      "source_rules": "## W01 · 冷静起步\n\n**标签：** `phase.start` `effect.wisdom`\n\n前置条件：\n\n```text\n起步判定出现轻微失误风险\n```\n\n成功：\n\n```text\n取消或减轻起步失误\n```\n\n| 等级 | 成功时失误惩罚降低 |\n|---|---:|\n| Lv1 | 30% |\n| Lv5 | 55% |\n| Lv10 | 85% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W02",
+      "display_name": "节奏校准",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "phase.opening",
+        "effect.stamina",
+        "effect.wisdom"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "25%"
+        ],
+        "5": [
+          "50%"
+        ],
+        "10": [
+          "80%"
+        ]
+      },
+      "source_rules": "## W02 · 节奏校准\n\n**标签：** `phase.opening` `effect.stamina` `effect.wisdom`\n\n触发：\n\n```text\n实际 pace 偏离当前跑法目标 pace\n```\n\n成功：\n\n```text\n将 pace 向合理区间修正\n```\n\n| 等级 | 修正幅度 |\n|---|---:|\n| Lv1 | 25% |\n| Lv5 | 50% |\n| Lv10 | 80% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W03",
+      "display_name": "抑制过速",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "phase.opening",
+        "phase.mid",
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "15%"
+        ],
+        "5": [
+          "35%"
+        ],
+        "10": [
+          "60%"
+        ]
+      },
+      "source_rules": "## W03 · 抑制过速\n\n**标签：** `phase.opening` `phase.mid` `effect.stamina`\n\n触发：\n\n```text\n进入 OVERPACE\n```\n\n成功：\n\n```text\n主动降速\n+\n减少过速体力浪费\n```\n\n| 等级 | 过速额外消耗降低 |\n|---|---:|\n| Lv1 | 15% |\n| Lv5 | 35% |\n| Lv10 | 60% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W04",
+      "display_name": "贴栏判断",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "effect.position",
+        "effect.wisdom"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+2%"
+        ],
+        "5": [
+          "+5%"
+        ],
+        "10": [
+          "+8%"
+        ]
+      },
+      "source_rules": "## W04 · 贴栏判断\n\n**标签：** `effect.position` `effect.wisdom`\n\n触发：\n\n```text\n内侧路线存在可用空间\n+\n预计不会在下个 Checkpoint 被堵\n```\n\n成功：\n\n```text\n尝试占据更省距离的内侧路线\n```\n\n| 等级 | 路线选择收益修正 |\n|---|---:|\n| Lv1 | +2% |\n| Lv5 | +5% |\n| Lv10 | +8% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W05",
+      "display_name": "外道预判",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "effect.block",
+        "effect.position"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "+5%"
+        ],
+        "5": [
+          "+12%"
+        ],
+        "10": [
+          "+20%"
+        ]
+      },
+      "source_rules": "## W05 · 外道预判\n\n**标签：** `effect.block` `effect.position`\n\n触发：\n\n```text\n前方密度过高\n+\n外侧存在空间\n```\n\n成功：\n\n```text\n提前外移\n避免 blocked\n```\n\n| 等级 | 避堵判定 |\n|---|---:|\n| Lv1 | +5% |\n| Lv5 | +12% |\n| Lv10 | +20% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W06",
+      "display_name": "临机换道",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "effect.block",
+        "effect.position"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "15%"
+        ],
+        "5": [
+          "35%"
+        ],
+        "10": [
+          "60%"
+        ]
+      },
+      "source_rules": "## W06 · 临机换道\n\n**标签：** `effect.block` `effect.position`\n\n触发：\n\n```text\n已经 blocked\n+\n存在可切换路线\n```\n\n成功：\n\n```text\n立即尝试换道\n```\n\n| 等级 | 堵塞惩罚降低 |\n|---|---:|\n| Lv1 | 15% |\n| Lv5 | 35% |\n| Lv10 | 60% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W07",
+      "display_name": "追击时机",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "style.late",
+        "style.closer",
+        "effect.overtake"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "+4%"
+        ],
+        "5": [
+          "+9%"
+        ],
+        "10": [
+          "+15%"
+        ]
+      },
+      "source_rules": "## W07 · 追击时机\n\n**标签：** `style.late` `style.closer` `effect.overtake`\n\n触发：\n\n```text\n比赛后半\n+\n差/追\n+\n前方出现可超车目标\n```\n\n成功：\n\n```text\n选择更有利的超车时机\n```\n\n| 等级 | 超车判定 |\n|---|---:|\n| Lv1 | +4% |\n| Lv5 | +9% |\n| Lv10 | +15% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W08",
+      "display_name": "延后冲刺",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "phase.final_corner",
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "3%"
+        ],
+        "5": [
+          "7%"
+        ],
+        "10": [
+          "12%"
+        ]
+      },
+      "source_rules": "## W08 · 延后冲刺\n\n**标签：** `phase.final_corner` `effect.stamina`\n\n触发：\n\n```text\n最终弯道\n+\n体力偏低\n+\n尚未必须立即冲刺\n```\n\n成功：\n\n```text\n推迟全力加速\n保存最后直线体力\n```\n\n| 等级 | 最终弯道体力节省 |\n|---|---:|\n| Lv1 | 3% |\n| Lv5 | 7% |\n| Lv10 | 12% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W09",
+      "display_name": "提前发力",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "phase.final_corner",
+        "effect.acceleration"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+3%"
+        ],
+        "5": [
+          "+7%"
+        ],
+        "10": [
+          "+11%"
+        ]
+      },
+      "source_rules": "## W09 · 提前发力\n\n**标签：** `phase.final_corner` `effect.acceleration`\n\n触发：\n\n```text\n最终弯道\n+\n体力充足\n+\n当前排名落后于跑法理想区\n```\n\n成功：\n\n```text\n提前进入加速阶段\n```\n\n| 等级 | 加速度 |\n|---|---:|\n| Lv1 | +3% |\n| Lv5 | +7% |\n| Lv10 | +11% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W10",
+      "display_name": "中盘节能",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "phase.mid",
+        "effect.stamina"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "-6%"
+        ],
+        "5": [
+          "-12%"
+        ],
+        "10": [
+          "-20%"
+        ]
+      },
+      "source_rules": "## W10 · 中盘节能\n\n**标签：** `phase.mid` `effect.stamina`\n\n触发：\n\n```text\n中盘\n+\n当前无需抢位\n+\n体力低于同距离安全线\n```\n\n成功：\n\n```text\n降低一段巡航速度\n换取体力\n```\n\n| 等级 | 当前 Checkpoint 体力消耗 |\n|---|---:|\n| Lv1 | -6% |\n| Lv5 | -12% |\n| Lv10 | -20% |\n\n代价：\n\n```text\n本 Checkpoint 速度发挥 -1% ~ -3%\n```\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W11",
+      "display_name": "对手观察",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "effect.position",
+        "effect.wisdom"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+3%"
+        ],
+        "5": [
+          "+7%"
+        ],
+        "10": [
+          "+12%"
+        ]
+      },
+      "source_rules": "## W11 · 对手观察\n\n**标签：** `effect.position` `effect.wisdom`\n\n触发：\n\n```text\n中盘\n+\n身边存在2匹以上位置竞争对手\n```\n\n成功：\n\n```text\n提高接下来1个Checkpoint的位置稳定与路线判断\n```\n\n| 等级 | 位置控制 |\n|---|---:|\n| Lv1 | +3% |\n| Lv5 | +7% |\n| Lv10 | +12% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W12",
+      "display_name": "反超判断",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "effect.overtake",
+        "effect.wisdom"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+4%"
+        ],
+        "5": [
+          "+10%"
+        ],
+        "10": [
+          "+18%"
+        ]
+      },
+      "source_rules": "## W12 · 反超判断\n\n**标签：** `effect.overtake` `effect.wisdom`\n\n触发：\n\n```text\n刚被超越\n+\n立即反超并非必然最优\n```\n\n成功后根据 RaceContext 自动二选一：\n\n```text\n有利 → 尝试反超\n不利 → 保存体力\n```\n\n| 等级 | 决策质量修正 |\n|---|---:|\n| Lv1 | +4% |\n| Lv5 | +10% |\n| Lv10 | +18% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W13",
+      "display_name": "弯道择线",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "phase.corner",
+        "effect.position",
+        "effect.overtake"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+3%"
+        ],
+        "5": [
+          "+7%"
+        ],
+        "10": [
+          "+12%"
+        ]
+      },
+      "source_rules": "## W13 · 弯道择线\n\n**标签：** `phase.corner` `effect.position` `effect.overtake`\n\n触发：\n\n```text\n进入弯道\n+\n存在两条以上可行路线\n```\n\n成功：\n\n```text\n选择预计综合损失最低路线\n```\n\n| 等级 | 弯道路线效率 |\n|---|---:|\n| Lv1 | +3% |\n| Lv5 | +7% |\n| Lv10 | +12% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W14",
+      "display_name": "最终弯道决断",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "phase.final_corner",
+        "effect.wisdom"
+      ],
+      "inheritance_random_pool": false,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+4%"
+        ],
+        "5": [
+          "+9%"
+        ],
+        "10": [
+          "+15%"
+        ]
+      },
+      "source_rules": "## W14 · 最终弯道决断\n\n**标签：** `phase.final_corner` `effect.wisdom`\n\n触发：\n\n```text\n最终弯道\n+\n存在“内切 / 外绕 / 保持”多个选择\n```\n\n成功：\n\n```text\n选择当前期望收益最高策略\n```\n\n| 等级 | 决策收益修正 |\n|---|---:|\n| Lv1 | +4% |\n| Lv5 | +9% |\n| Lv10 | +15% |\n\n随机补位池：❌  \n定位：高级血统技能。\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W15",
+      "display_name": "末段配速",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "phase.final_straight",
+        "effect.stamina",
+        "effect.speed"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": true,
+      "level_anchors": {
+        "1": [
+          "+3%"
+        ],
+        "5": [
+          "+7%"
+        ],
+        "10": [
+          "+12%"
+        ]
+      },
+      "source_rules": "## W15 · 末段配速\n\n**标签：** `phase.final_straight` `effect.stamina` `effect.speed`\n\n触发：\n\n```text\n最后直线\n+\n体力在 5%~25%\n```\n\n成功：\n\n```text\n在速度和体力之间选择更合理的输出\n```\n\n| 等级 | 低体力速度效率 |\n|---|---:|\n| Lv1 | +3% |\n| Lv5 | +7% |\n| Lv10 | +12% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    },
+    {
+      "skill_id": "W16",
+      "display_name": "泥地路线判断",
+      "type": "WISDOM_TRIGGER",
+      "tags": [
+        "surface.dirt",
+        "effect.position",
+        "effect.wisdom"
+      ],
+      "inheritance_random_pool": true,
+      "first_batch": false,
+      "level_anchors": {
+        "1": [
+          "+4%"
+        ],
+        "5": [
+          "+9%"
+        ],
+        "10": [
+          "+15%"
+        ]
+      },
+      "source_rules": "## W16 · 泥地路线判断\n\n**标签：** `surface.dirt` `effect.position` `effect.wisdom`\n\n触发：\n\n```text\n泥地\n+\n赛道状态稍重/重/不良\n```\n\n成功：\n\n```text\n优先选择抓地更稳定路线\n```\n\n| 等级 | 泥地路线效率 |\n|---|---:|\n| Lv1 | +4% |\n| Lv5 | +9% |\n| Lv10 | +15% |\n\n随机补位池：✅\n\n---",
+      "version": "P8-Skill-V1",
+      "runtime_enabled": false
+    }
+  ]
+}

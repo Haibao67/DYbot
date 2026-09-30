@@ -114,7 +114,7 @@ python -m dzmm_bot.simulate_economy --output /tmp/dybot-economy-check.json
 | 变更范围 | 首跑 | 不可省的增量断言 | 额外门槛 |
 |---|---|---|---|
 | P0：入站/回复/出站 | `test_core` 相关单测；新增 Reply 契约测试 | 两玩家消息 ID 不串、成功和错误都引用、超时不双发、`uncertain`、重启后元数据存在 | 真实群 Reply UI 验收；平台协议未核验=未完成真实引用 |
-| P1：指令别名/消息排版 | `RuleTests`、指令定点集成、瑞禾快照 | 旧命令有效；输出动态值/缩进/进度/金额/错误反馈；未开放菜单不伪装可用 | 长消息真实客户端可读性 |
+| P1：指令别名/消息排版 | `RuleTests`、指令定点集成、铃露快照 | 旧命令有效；输出动态值/缩进/进度/金额/错误反馈；未开放菜单不伪装可用 | 长消息真实客户端可读性 |
 | P2：牧场喂食/亲密/天气 | `GameTests` 对应方法 + 新纯规则单测 | 12h/14h/断喂10h、收取幂等、旧动物兼容、容量及账本守恒 | 历史库迁移演练 |
 | P3：金额/行情/买卖 | 规则/经济/账本测试 + 迁移测试 | 小数无浮点误差、5%买卖费、30min 限购、跨群共享、旧币单位不变义 | PostgreSQL 并发与旧库迁移、L6 |
 | P4/P5：加工与 Buff | 新工厂测试 + 旧库存/账本/发送关键用例 | 原料扣减/失败回滚、取货不双得、升级工时、取消/加急竞态、面板非硬编码 | 迁移/多用户压力与 L6（涉及经济时） |
@@ -138,7 +138,7 @@ python -m dzmm_bot.simulate_economy --output /tmp/dybot-economy-check.json
 
 需求来源：`docs/reference/ruihe.md` 最后的**牧场面板、投产回执、加工厂面板**，再加上“所有玩家主动命令回复该玩家原消息”。
 
-1. 为三类样例准备**固定时钟、固定玩家状态、固定价格快照**的 fixture，并以现有 `tests/fixtures/game-messages.json` / `RuleTests.test_saved_message_snapshots` 为写法参考；新增瑞禾快照文件时与旧快照分开。
+1. 为三类样例准备**固定时钟、固定玩家状态、固定价格快照**的 fixture，并以现有 `tests/fixtures/game-messages.json` / `RuleTests.test_saved_message_snapshots` 为写法参考；新增铃露快照文件时与旧快照分开。
 2. 直接比较完整 UTF-8 字符串，覆盖 `——`、`｜`、全角空格 `　`、`▓░`、Emoji、换行、末尾中文指令；**不要无差别去空格或删掉动态字段**以让用例通过。
 3. 易变化的余额、时间、昵称通过**输入 fixture 固定**，不要更新预期文本来掩盖业务公式错误。
 4. 再补小量边界样例：空牧场、停产、0库存、满级、已完成线、长昵称、格式错误、分页消息。
@@ -165,7 +165,7 @@ python -m dzmm_bot.simulate_economy --output /tmp/dybot-economy-check.json
 ### 6.3 `smoke_test.py` / 28天模拟的使用边界
 
 - 现有 `smoke_test.py` 用临时 SQLite、`simulate` 模式启动 Core/Worker，检查四条旧指令以及 **余额总计 47、奖池 3** 等 M1 数字。经济规则更新后这些断言可能需要**依据新已确认规则重算**；不得为了绿灯删除守恒检查，也不能拿它当“原生 Reply 实际平台已通过”的证据。
-- 现有 28天模拟采用 M1 玩法、固定时间/seed、独立 DB、逐日核对账本；瑞禾更改经济规则后要**同步维护模拟行为与指标**，保留旧 M1 规则版本的独立回归。运行前先确认它测试的到底是旧规则还是新规则。
+- 现有 28天模拟采用 M1 玩法、固定时间/seed、独立 DB、逐日核对账本；铃露更改经济规则后要**同步维护模拟行为与指标**，保留旧 M1 规则版本的独立回归。运行前先确认它测试的到底是旧规则还是新规则。
 - `docs/economy-simulation-28d.json` 是已保存的参考报告；**临时测试输出不要覆盖它**，只有批准更新模拟策略时才提交新版基准报告及说明。
 
 ## 7. Token 节约约定（Codex 必须遵守）
@@ -204,7 +204,7 @@ python -m dzmm_bot.simulate_economy --output /tmp/dybot-economy-check.json
 ### 8.2 `docs/ruihe-progress.md` 最小状态格式
 
 ```markdown
-# 瑞禾开发进度
+# 铃露开发进度
 基准提交：<sha>｜当前分支：<branch>｜当前阶段：P0｜最近验收：<日期>
 已完成：<至多 5 项，指向代码/测试>
 正在做：<只写 1 个垂直切片>

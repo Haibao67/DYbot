@@ -8,6 +8,7 @@ from urllib.parse import unquote, urlsplit
 
 from playwright.async_api import async_playwright
 from .settings import ROOT
+from .invitations import private_room_ids, rpc_json
 
 
 def account_id(body, field=""):
@@ -166,6 +167,73 @@ class BrowserSession:
         await self.save_login_state()
         # Socket now runs inside Chromium and uses its own cookie jar.
         return token, self.user_id
+
+    async def _trpc(self, procedure, payload=None, mutation=False):
+        """Use the authenticated same-origin browser session for official tRPC calls."""
+        return await self.page.evaluate("""async ({procedure, payload, mutation}) => {
+            const path = '/api/trpc/' + procedure;
+            const url = mutation ? path : path + (payload === null ? '' :
+                '?input=' + encodeURIComponent(JSON.stringify({json: payload})));
+            const options = mutation ? {method:'POST', credentials:'include',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({json:payload})} : {credentials:'include'};
+            const response = await fetch(url, options);
+            return {status:response.status, body:await response.json()};
+        }""", {"procedure": procedure, "payload": payload, "mutation": mutation})
+
+    async def chatroom_user_name(self, user_id, room_id):
+        """Read the observed batched user.getChatroomUser protocol in Chromium."""
+        response = await self.page.evaluate("""async ({userId, chatroomId}) => {
+            const input = {'0': {json: {userId, chatroomId}}};
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), 10000);
+            try {
+                const response = await fetch('/api/trpc/user.getChatroomUser?batch=1&input='
+                    + encodeURIComponent(JSON.stringify(input)),
+                    {credentials: 'include', signal: controller.signal});
+                return {status: response.status, body: await response.json()};
+            } finally { clearTimeout(timer); }
+        }""", {'userId': user_id, 'chatroomId': room_id})
+        body = response.get('body')
+        if response.get('status') != 200:
+            raise RuntimeError('nickname_http_' + str(response.get('status')))
+        if not isinstance(body, list) or len(body) != 1:
+            raise RuntimeError('nickname_response_envelope_invalid')
+        profile = rpc_json(body[0])
+        if not isinstance(profile, dict):
+            entry=body[0] if isinstance(body[0],dict) else {}
+            error=entry.get('error',{})
+            data=error.get('json',{}).get('data',{}) if isinstance(error,dict) and isinstance(error.get('json'),dict) else {}
+            code=data.get('code','UNKNOWN') if isinstance(data,dict) else 'UNKNOWN'
+            allowed={'UNAUTHORIZED','FORBIDDEN','NOT_FOUND','BAD_REQUEST','INTERNAL_SERVER_ERROR'}
+            raise RuntimeError('nickname_rpc_' + (code if code in allowed else 'UNKNOWN'))
+        if profile.get('id') != user_id:
+            raise RuntimeError('nickname_profile_id_mismatch')
+        name = profile.get('fullName')
+        if not isinstance(name,str) or not name.strip():
+            raise RuntimeError('nickname_full_name_missing')
+        return name.strip()[:100]
+
+    async def private_rooms(self):
+        response = await self._trpc("chat.listAll")
+        if response["status"] != 200:
+            raise RuntimeError("private_chat_list_unavailable")
+        return private_room_ids(response["body"])
+
+    async def invite_info(self, code):
+        response = await self._trpc("groupChat.getInviteInfo", {"code": code})
+        info = rpc_json(response["body"]) if response["status"] == 200 else None
+        if not isinstance(info, dict) or not isinstance(info.get("groupName"), str):
+            raise RuntimeError("invitation_info_unavailable")
+        return info
+
+    async def join_by_invite(self, code):
+        response = await self._trpc("groupChat.joinByInvite", {"inviteCode": code}, mutation=True)
+        result = rpc_json(response["body"]) if response["status"] == 200 else None
+        room_id = result.get("chatroomId") if isinstance(result, dict) else None
+        if not isinstance(room_id, str) or not room_id:
+            raise RuntimeError("invitation_join_rejected")
+        return room_id
 
 
 async def login(settings):

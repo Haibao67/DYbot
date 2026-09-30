@@ -26,7 +26,24 @@ def duration(seconds):
         return "已完成/待收取"
     minutes = math.ceil(seconds / 60)
     hours, minutes = divmod(minutes, 60)
-    return f"{hours}小时{minutes}分钟" if hours else f"{minutes}分钟"
+    return f"{seconds / 3600:.1f}h" if seconds >= 3600 else f"{minutes}分钟"
+
+
+def long_duration(seconds):
+    try:
+        seconds = max(0, int(float(seconds)))
+    except (TypeError, ValueError):
+        seconds = 0
+    days, remainder = divmod(seconds, 86400)
+    hours, remainder = divmod(remainder, 3600)
+    minutes = math.ceil(remainder / 60)
+    if minutes == 60:
+        hours += 1
+        minutes = 0
+    if hours == 24:
+        days += 1
+        hours = 0
+    return " ".join(f"{value}{label}" for value, label in ((days, "天"), (hours, "小时"), (minutes, "分钟")) if value) or "不足1分钟"
 
 
 def bar(completed, total, width=6):

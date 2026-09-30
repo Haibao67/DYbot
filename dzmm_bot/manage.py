@@ -32,6 +32,7 @@ def main():
     commands = parser.add_subparsers(dest="command", required=True)
     for name in ("init", "login", "status"):
         commands.add_parser(name)
+    commands.add_parser("clear-outbound", help="将所有活动发送任务取消并保留审计记录")
     room = commands.add_parser("room")
     room.add_argument("id")
     room.add_argument("--kind", choices=["group", "private"], default="group")
@@ -42,6 +43,9 @@ def main():
     resolve.add_argument("id")
     resolve.add_argument("--as", dest="resolution", choices=["sent", "failed"], required=True)
     resolve.add_argument("--platform-id")
+    commands.add_parser("invites")
+    approve = commands.add_parser("approve-invite")
+    approve.add_argument("id")
     args = parser.parse_args()
     if args.command == "init":
         initialize()
@@ -56,8 +60,14 @@ def main():
             response = client.put("/admin/rooms", json={"id": args.id, "kind": args.kind, "enabled": not args.disable})
         elif args.command == "status":
             response = client.get("/admin/status")
+        elif args.command == "clear-outbound":
+            response = client.post("/admin/outbound/clear")
         elif args.command == "resolve":
             response = client.post(f"/admin/outbound/{args.id}/resolve", json={"status": args.resolution, "platform_id": args.platform_id})
+        elif args.command == "invites":
+            response = client.get("/admin/invites")
+        elif args.command == "approve-invite":
+            response = client.post(f"/admin/invites/{args.id}/approve")
         else:
             if cfg.mode != "simulate":
                 raise SystemExit("模拟命令仅允许在 DZMM_WORKER_MODE=simulate 时使用")

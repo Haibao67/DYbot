@@ -1,0 +1,49 @@
+{
+  "version": "0.8.9",
+  "published_date": "2026-09-30",
+  "title": "照料顺手收，经营更轻松",
+  "theme": "🌾",
+  "summary": "喂食和播种顺手收获，投产回执更清楚，日常操作更省心！",
+  "features": [
+    {
+      "id": "auto_ranch_collection",
+      "name": "喂食自动收取",
+      "emoji": "🏡",
+      "short_description": "喂食成功后自动收取牧场已完成的产物，回复显示实际收取结果。",
+      "details": "普通喂食与精饲料喂食成功后，自动领取截至当前已完成的牧场产物；未完成的生产继续进行。",
+      "commands": ["/喂食", "/喂食 精"],
+      "tips": [],
+      "trigger_commands": []
+    },
+    {
+      "id": "auto_farm_collection",
+      "name": "播种自动收获",
+      "emoji": "🌱",
+      "short_description": "播种成功后顺手收获此前已成熟的作物，刚种下的作物继续生长。",
+      "details": "成功播种后自动收获此前成熟的作物，并在播种回执中显示结果。",
+      "commands": ["/播种 燕麦 1"],
+      "tips": [],
+      "trigger_commands": []
+    },
+    {
+      "id": "clear_receipts",
+      "name": "回执更清爽",
+      "emoji": "🏭",
+      "short_description": "投产回执聚焦产品、生产线和完成时间；部分日常提示缩短冗余用语。",
+      "details": "牧场、农场、库存、配方等指定页面，以及马匹、赛马、更新和拍卖内容保留原有信息展示。",
+      "commands": ["/投产 蛋糕 1"],
+      "tips": [],
+      "trigger_commands": []
+    }
+  ],
+  "commands": ["/喂食 | /喂食 精 | /播种 燕麦 1 | /投产 蛋糕 1"],
+  "tips": ["自动收获结果会显示在操作回执中。", "也可以继续用 /收取 或 /收获 主动领取。"],
+  "closing": "祝各位老板收获满仓！",
+  "changelog": {
+    "added": ["喂食后自动收取牧场产物", "播种后自动收获已成熟农作物"],
+    "changed": ["投产成功回执精简", "非豁免命令回复应用通用安全短语压缩", "Socket ACK 分段耗时观测"],
+    "fixed": ["群聊强制接生的可选品质渲染错误"],
+    "migration": [],
+    "known_issues": ["精简对照文档中的个别模板尚未逐条覆盖"]
+  }
+}
